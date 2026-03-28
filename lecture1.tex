@@ -1,0 +1,105 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 1}
+    
+    \begin{abstract}  
+    Outline:
+    - Review syllabus. (5 minutes)\\
+    - Introduction to proof/logic again (on the board).\\
+    - Prove $\sqrt{2}$ is irrational.\\
+    - State the axiom of completeness.\\
+    - Define the supremum.
+\end{abstract}
+
+\maketitle
+
+Students at the board: (10 minutes)
+\begin{exercise}
+    Given the statement ``If it is sunny, I will go to the park," let $P$ represent the clause ``it is sunny" and $Q$ represent the clause ``I will go to the park."
+\begin{enumerate}
+    \item Using $P$ and $Q$ and the arrow $\Rightarrow$ for ``then" or ``implies", write the statement in logical form.
+    \item State the contrapositive in logical form and in words, using $\neg Q$ or $\neg P$ to represent ``I will NOT go to the park" and ``It is NOT sunny", respectively. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    John will not go to the party if Jack goes to the party.  Stacy will go to the party if John goes to the party.
+    \begin{enumerate}
+        \item Assign clauses $P, Q$, and $R$ to different statements.
+        \item Using the logical clauses, prove that Stacy will go to the party if Jack does not go to the party.
+    \end{enumerate}
+\end{exercise}
+
+(30 minutes)
+Numbers:
+\begin{align*}
+    \mathbb{N} = \{ 1, 2, 3, 4, 5, ...\} &\quad \text{\textit{addition works, no additive inverse}} \\
+    \mathbb{Z} = \{..., -3, -2, -1, 0, 1, 2, 3 ,...\} &\quad \text{\textit{addition and additive inverse, multiplication,}}
+    \\
+    \phantom{ \mathbb{Z} = \{..., -3, -2, -1, 0, 1, 2, 3 ,...\}} &\quad \text{\textit{but no multiplicative inverse}} \; \textcolor{red}{ring}
+    \\
+    \mathbb{Q} = \left\{\frac{p}{q} : p,q \in \mathbb{Z}, \; q\neq 0\right\} &\quad \text{\textit{additive inverse, multiplicative inverse}} \textcolor{red}{field}\;
+\end{align*}
+
+While a field is one of the nicest objects possible, there are other operations we might like to be able to understand them and their inverses.  For example, can we always take a number in $\mathbb{Q}$ and find its square root in $\mathbb{Q}$?  \textcolor{red}{Ask them if we can.}
+
+\begin{theorem} 
+There is no rational number whose square is $2$.
+\end{theorem}
+\begin{proof}
+    We will prove this by \textbf{contradiction}. (\textbf{Ask if they know what it means to prove by contradiction.})
+    Suppose there is a rational number $\frac{p}q$ such that $p, q \in \mathbb{Z}$ are non-zero and the rational number cannot be reduced further $\left(\text{i.e., }\frac12 \text{ is fully reduced, but }\frac24 \text{ is not}\right)$ and is equal to the $\sqrt2$:
+    \begin{align}
+        \frac{p}q = \sqrt{2}.
+    \end{align}
+    Squaring both sides:
+    \begin{align}
+        \frac{p^2}{q^2} &= 2\\
+        p^2 &= 2q^2.
+    \end{align}
+    Thus, $p^2$ is a non-zero even number.  Since $p^2$ is even, then $p$ is an even number \textcolor{red}{(ASK THEM WHY)} and we rewrite $p = 2r$.  Therefore,
+    \begin{align}
+        (2r)^2 &= 2q^2 \\
+        2r^2 &= q^2.
+    \end{align}
+    This implies $q^2$ is \textcolor{red}{(ASK HERE)} ... even.  Therefore, $q$ is even, and we write it as $q = 2s$.  Thus, $p=2r$ and $q=2s$ are both even, and therefore
+    \begin{align}
+        \frac{p}{q} = \frac{2r}{2s} = \frac{r}{s},
+    \end{align}
+    which contradicts the assumption that then $\frac{p}{q}$ is an irreducible rational number.
+\end{proof}
+
+We will tell you that we will take for granted that there is an ordering on $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$, $a \leq b$, $a = b$, and $a \geq b$.
+
+Assumed definitions
+\begin{itemize}
+    \item set
+    \item union
+    \item intersection
+    \item subset
+    \item complement of a set
+\end{itemize}
+
+\begin{definition}[Definition 1.2.3]
+    Given two sets $A$ and $B$, a \textit{function} from $A$ to $B$ is a rule or mapping that takes each element $x \in A$ and associates it with a single element of $B$.  In this case, we write $f: A \to B$.  Given an element $x \in A$, the expression of $f(x)$ is used to represent the element of $B$ associated with $x$ by $f$.  The set $A$ is called the \textit{domain} of $f$.  The \textit{range} of $f$ is not necessarily equal to $B$ but refers to the subset of $B$ given by $\{y \in B: y = f(x) \text{ for some } x \in A\}$.
+\end{definition}
+
+Intuition:  $\mathbb{Q}$ has ``holes," $\mathbb{R}$ ``fills in" the holes
+
+\textbf{Axiom of Completeness} Every nonempty set of real numbers that is bounded above has a least upper bound.
+
+\begin{definition}
+    A set $A \subset \mathbb{R}$ is \textit{bounded above} if there exists a number $b \in \mathbb{R}$ such that $a \leq b$ for all $a \in A$.  The number $b$ is called an \textit{upper bound} for $A$.  \textcolor{red}{Have them fill in the lower bound definition.}  Similarly, the set $A$ is \textit{bounded below} if there exists a \textit{lower bound} $l \in \mathbb{R}$ satisfying $l \leq z$ for every $a \in A$.
+\end{definition}
+
+\begin{definition}
+    A real number $s$ is the \textit{least upper bound} for a set $A \subseteq \mathbb{R}$ if it meets the following criteria:
+    \begin{enumerate}
+        \item $s$ is an upper bound for $A$
+        \item if $b$ is any upper bound for $A$, then $s \leq b$.
+    \end{enumerate}
+\end{definition}
+
+\end{document}
