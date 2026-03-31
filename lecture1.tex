@@ -38,18 +38,18 @@ Numbers:
     \mathbb{N} = \{ 1, 2, 3, 4, 5, ...\} &\quad \text{\textit{addition works, no additive inverse}} \\
     \mathbb{Z} = \{..., -3, -2, -1, 0, 1, 2, 3 ,...\} &\quad \text{\textit{addition and additive inverse, multiplication,}}
     \\
-    \phantom{ \mathbb{Z} = \{..., -3, -2, -1, 0, 1, 2, 3 ,...\}} &\quad \text{\textit{but no multiplicative inverse}} \; \textcolor{red}{ring}
+    \phantom{ \mathbb{Z} = \{..., -3, -2, -1, 0, 1, 2, 3 ,...\}} &\quad \text{\textit{but no multiplicative inverse}}
     \\
-    \mathbb{Q} = \left\{\frac{p}{q} : p,q \in \mathbb{Z}, \; q\neq 0\right\} &\quad \text{\textit{additive inverse, multiplicative inverse}} \textcolor{red}{field}\;
+    \mathbb{Q} = \left\{\frac{p}{q} : p,q \in \mathbb{Z}, \; q\neq 0\right\} &\quad \text{\textit{additive inverse, multiplicative inverse}}
 \end{align*}
 
-While a field is one of the nicest objects possible, there are other operations we might like to be able to understand them and their inverses.  For example, can we always take a number in $\mathbb{Q}$ and find its square root in $\mathbb{Q}$?  \textcolor{red}{Ask them if we can.}
+While a field is one of the nicest objects possible, there are other operations we might like to be able to understand them and their inverses.  For example, can we always take a number in $\mathbb{Q}$ and find its square root in $\mathbb{Q}$?
 
 \begin{theorem} 
 There is no rational number whose square is $2$.
 \end{theorem}
 \begin{proof}
-    We will prove this by \textbf{contradiction}. (\textbf{Ask if they know what it means to prove by contradiction.})
+    We will prove this by \textbf{contradiction} (these types of theorems, stating nothing satisfies a certain claim, are often proved by contradiction).
     Suppose there is a rational number $\frac{p}q$ such that $p, q \in \mathbb{Z}$ are non-zero and the rational number cannot be reduced further $\left(\text{i.e., }\frac12 \text{ is fully reduced, but }\frac24 \text{ is not}\right)$ and is equal to the $\sqrt2$:
     \begin{align}
         \frac{p}q = \sqrt{2}.
@@ -59,12 +59,12 @@ There is no rational number whose square is $2$.
         \frac{p^2}{q^2} &= 2\\
         p^2 &= 2q^2.
     \end{align}
-    Thus, $p^2$ is a non-zero even number.  Since $p^2$ is even, then $p$ is an even number \textcolor{red}{(ASK THEM WHY)} and we rewrite $p = 2r$.  Therefore,
+    Thus, $p^2$ is a non-zero even number.  Since $p^2$ is even, then $p$ is an even number \textcolor{red}{(WHY)} and we rewrite $p = 2r$.  Therefore,
     \begin{align}
         (2r)^2 &= 2q^2 \\
         2r^2 &= q^2.
     \end{align}
-    This implies $q^2$ is \textcolor{red}{(ASK HERE)} ... even.  Therefore, $q$ is even, and we write it as $q = 2s$.  Thus, $p=2r$ and $q=2s$ are both even, and therefore
+    This implies $q^2$ is even.  Therefore, $q$ is even, and we write it as $q = 2s$.  Thus, $p=2r$ and $q=2s$ are both even, and therefore
     \begin{align}
         \frac{p}{q} = \frac{2r}{2s} = \frac{r}{s},
     \end{align}
@@ -91,7 +91,7 @@ Intuition:  $\mathbb{Q}$ has ``holes," $\mathbb{R}$ ``fills in" the holes
 \textbf{Axiom of Completeness} Every nonempty set of real numbers that is bounded above has a least upper bound.
 
 \begin{definition}
-    A set $A \subset \mathbb{R}$ is \textit{bounded above} if there exists a number $b \in \mathbb{R}$ such that $a \leq b$ for all $a \in A$.  The number $b$ is called an \textit{upper bound} for $A$.  \textcolor{red}{Have them fill in the lower bound definition.}  Similarly, the set $A$ is \textit{bounded below} if there exists a \textit{lower bound} $l \in \mathbb{R}$ satisfying $l \leq z$ for every $a \in A$.
+    A set $A \subset \mathbb{R}$ is \textit{bounded above} if there exists a number $b \in \mathbb{R}$ such that $a \leq b$ for all $a \in A$.  The number $b$ is called an \textit{upper bound} for $A$.  Similarly, the set $A$ is \textit{bounded below} if there exists a \textit{lower bound} $l \in \mathbb{R}$ satisfying $l \leq z$ for every $a \in A$.
 \end{definition}
 
 \begin{definition}
