@@ -5,22 +5,100 @@
     \title{Lecture 2}
     
     \begin{abstract}  
-    Outline:
-    - board work \\
-    - nested interval property\\
-    
+    Outline: \\
+    - navigate Canvas and Ximera \\
+    - supremum, infimum, maximum, minimum \\
+    - introduction to proof writing/thinking 
 \end{abstract}
 
 \maketitle
 
-\textcolor{red}{*Remember to put the definition of supremum on the board for them.}
+At the beginning of class
+\begin{itemize}
+    \item Navigate Canvas, Ximera (show them the syllabus again too)
+    \item Show them Overleaf and how to write in Overleaf
+    \item Get to know everyone's name
+\end{itemize}
+
+Last time, we discussed how we are going to be thinking about the real numbers $\mathbb{R}$ as ``completing" the rational numbers $\mathbb{Q}$.  As a reminder, at this point, we are presuming the existence of $\mathbb{N}, \mathbb{Z}, \mathbb{Q},$ and $\mathbb{R}$, and we are also taking for granted the ordering of elements in these sets (e.g., $1 < 2$, $1 = 1$, $0 < 1$, etc).  Let's restate our axiom and definitions:
+
+\textbf{Axiom of Completeness} Every nonempty set of real numbers that is bounded above has a least upper bound.
+
+\begin{definition}
+    A set $A \subset \mathbb{R}$ is \textit{bounded above} if there exists a number $b \in \mathbb{R}$ such that $a \leq b$ for all $a \in A$.  The number $b$ is called an \textit{upper bound} for $A$.  Similarly, the set $A$ is \textit{bounded below} if there exists a \textit{lower bound} $l \in \mathbb{R}$ satisfying $l \leq z$ for every $a \in A$.
+\end{definition}
+
+\begin{definition}\label{def:supremum}
+    A real number $s$ is the \textit{least upper bound} for a set $A \subseteq \mathbb{R}$ if it meets the following criteria:
+    \begin{enumerate}
+        \item $s$ is an upper bound for $A$
+        \item if $b$ is any upper bound for $A$, then $s \leq b$.
+    \end{enumerate}
+\end{definition}
+
+Let's look at this in more detail with a few examples.
+
+(Important) Side note: When proving something is something else, each part of the definition of that new thing has to be rigorously justified, even if it seems obvious!  The power in this is not seen as much in simple problems where things appear obvious, but the effects of such rigor are seen in much less intuitive problems.
+
+\begin{example}
+    Prove that the supremum of the set $A = \left\{\frac{1}{n} : n \in \mathbb{Z}\right\}$ is 1.
+\end{example}
+\begin{proof}
+    We are asking to prove that $1$ satisfies the properties of being a supremum for the set $A$ given by Definition \ref{def:supremum}.  Thus, we have to check both exclusively.
+    \begin{enumerate}
+    \item We need to check that \textit{every} element of $A$ is bounded by $1$.  Every element of $A$ is characterized by $\frac{1}{n}$ for any $n \in \mathbb{Z}$.  We know by the ordering we have assumed on $\mathbb{Q}$ that $\frac{1}{n} \leq 1$ for any $|n| \geq 1$.  So, $1$ is an upper bound.  
+    \item Now, we have to verify (b).  Suppose $b$ is an upper bound for $A$.  This means that every element of $A$ is bounded above by $b$.  Since $1 \in A$, $1 \leq b$.
+    \end{enumerate}
+    Thus, since (a) and (b) of Definition \ref{def:supremum} have been satisfied, we have shown that $\sup(A) = 1$.
+\end{proof}
 
 \begin{exercise}
     Show that the supremum is unique.
 \end{exercise}
 
-\begin{exercise}
-    Let $A \subseteq \mathbb{R} $ be a set.  Does $\sup(A)$ always exist?  If it does exist, is $\sup(A)$ always in $A$?
-\end{exercise}
+\begin{definition}{Definition 1.3.4}\label{def:maximum}
+    A real number $a_0$ is a \textit{maximum} of the set $A$ if $a_0$ is an element of $A$ and $a_0 \geq a$ for all $a \in A$.  Similarly, a number $a_1$ is a \textit{minimum} of $A$ if $a_1 \in A$ and $a_1 \leq a$.
+\end{definition}
+
+\begin{example}
+    The interval $[0,2]$ has a maximum of $2$.  The interval $(0,2)$ has no maximum, but it does have a supremum of $2$.
+\end{example}
+\begin{example}
+    The supremum of the set $A$ from Example 1 is also a maximum.
+\end{example}
+
+Super important fact!: ``Reading mathematics is not like reading novels or history. You need to think slowly about every sentence. Usually, you will need to reread the same material later, often more than one rereading." - quote from a math proof book
+
+\begin{lemma}{Lemma 1.3.7}
+    Assume $s \in \mathbb{R}$ is an upper bound for a set $A \subseteq \mathbb{R}$.  then $s = \sup(A)$ if and only if, for every choice of $\epsilon > 0$, there exists an element $a \in A$ satisfying $s - \epsilon < a$.
+\end{lemma}
+The first time we look at this statement, there's simply a lot going on.  Let's break it down, one sentence at a time:
+
+The two main chunks
+ \begin{itemize}
+     \item $s \in \mathbb{R}$ is an upper bound on $A \subseteq \mathbb{R}$ \textcolor{red}{this sentence establishes the necessary information to define all the pieces of information we are going to makea claim about}
+     \item ($s$ is a least upper bound) if and only if ($\forall \; \epsilon > 0$, $\exists\; a \in A$ such that $s - \epsilon > a$).
+ \end{itemize}
+Still feels like a lot going on.
+\begin{itemize}
+    \item What is the hypothesis?  (i.e., if I am trying to find logical statements $P$ and $Q$, what is $P$?)
+    \item What is the consequence (i.e., what is $Q$)?
+\end{itemize}
+Trick question!  We have the phrase ``if and only if''.  In this case, $P= $ ``$s$ is a least upper bound," and $Q =$ ``$\forall \; \epsilon > 0$, $\exists\; a \in A$ such that $s - \epsilon > a$."  So, this statement is saying that the logical statement is $P \iff Q$.
+
+Now that we have identified the setup (what is $s$, what is $A$) and what we are trying to prove ($P\iff Q$), we can start thinking about the proof.
+
+Side note: some of you might be thinking ``well, this is obvious!"  One direction is obvious, the other, not so much!
+
+\begin{proof}
+    First direction: $P \implies Q$
+    \\
+    Let $s = \sup(A)$.  Let $\epsilon > 0$, and consider $s - \epsilon$.  Note that $s - \epsilon <s$.  This means that, since $s$ is the lub/sup for $A$, $s -\epsilon$ cannot be an upper bound for $A$ by the definition of supremum.  This implies that there has to be some element $a \in A$ such that $s-\epsilon \leq a \leq s$.  \textcolor{red}{why do we not say that $s-\epsilon = a$?}
+
+    Second direction: $Q \implies P$
+    Now, we assume $Q$ is true, i.e., for every $\epsilon > 0$ there exists an $a \in A$ such that $s-\epsilon < a$.  Recall that $s$ is an upper bound for $A$.  To prove it is the supremum, we have to show that (b) of Definition \ref{def:supremum} is satisfied.  Notably, take any $b< s$.  Let $\epsilon := s - b$.  By the assumption of $Q$, there exists an $a \in A$ such that $s - \epsilon < a$.  But, by construction $b = s-\epsilon$, so $b$ cannot be an upper bound.
+\end{proof}
+
+If this feels like talking in circles, that is not an abnormal feeling at this point in the course!  Read each line, slowly and carefully, until you understand why each line is important.  The human brain is really good at compartmentalizing information and simplifying it quickly.  You have to unlearn some of that, and rebuild it back with this type of rigor, so you become a better logician, and a better mathematician.
 
 \end{document}
