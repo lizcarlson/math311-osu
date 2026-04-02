@@ -76,7 +76,7 @@ The first time we look at this statement, there's simply a lot going on.  Let's 
 
 The two main chunks
  \begin{itemize}
-     \item $s \in \mathbb{R}$ is an upper bound on $A \subseteq \mathbb{R}$ \textcolor{red}{this sentence establishes the necessary information to define all the pieces of information we are going to makea claim about}
+     \item $s \in \mathbb{R}$ is an upper bound on $A \subseteq \mathbb{R}$ \textcolor{red}{this sentence establishes the necessary information to define all the pieces of information we are going to make a claim about}
      \item ($s$ is a least upper bound) if and only if ($\forall \; \epsilon > 0$, $\exists\; a \in A$ such that $s - \epsilon > a$).
  \end{itemize}
 Still feels like a lot going on.
@@ -84,7 +84,7 @@ Still feels like a lot going on.
     \item What is the hypothesis?  (i.e., if I am trying to find logical statements $P$ and $Q$, what is $P$?)
     \item What is the consequence (i.e., what is $Q$)?
 \end{itemize}
-Trick question!  We have the phrase ``if and only if''.  In this case, $P= $ ``$s$ is a least upper bound," and $Q =$ ``$\forall \; \epsilon > 0$, $\exists\; a \in A$ such that $s - \epsilon > a$."  So, this statement is saying that the logical statement is $P \iff Q$.
+Note that we also have the phrase ``if and only if''.  In this case, $P= $ ``$s$ is a least upper bound," and $Q =$ ``$\forall \; \epsilon > 0$, $\exists\; a \in A$ such that $s - \epsilon > a$."  So, this statement is saying that the logical statement is $P \iff Q$.
 
 Now that we have identified the setup (what is $s$, what is $A$) and what we are trying to prove ($P\iff Q$), we can start thinking about the proof.
 
@@ -93,7 +93,7 @@ Side note: some of you might be thinking ``well, this is obvious!"  One directio
 \begin{proof}
     First direction: $P \implies Q$
     \\
-    Let $s = \sup(A)$.  Let $\epsilon > 0$, and consider $s - \epsilon$.  Note that $s - \epsilon <s$.  This means that, since $s$ is the lub/sup for $A$, $s -\epsilon$ cannot be an upper bound for $A$ by the definition of supremum.  This implies that there has to be some element $a \in A$ such that $s-\epsilon \leq a \leq s$.  \textcolor{red}{why do we not say that $s-\epsilon = a$?}
+    Let $s = \sup(A)$.  Let $\epsilon > 0$, and consider $s - \epsilon$.  Note that $s - \epsilon <s$.  This means that, since $s$ is the lub/sup for $A$, $s -\epsilon$ cannot be an upper bound for $A$ by the definition of supremum.  This implies that there has to be some element $a \in A$ such that $s-\epsilon < a \leq s$.  \textcolor{red}{why do we not say that $s-\epsilon \leq a$?}
 
     Second direction: $Q \implies P$
     Now, we assume $Q$ is true, i.e., for every $\epsilon > 0$ there exists an $a \in A$ such that $s-\epsilon < a$.  Recall that $s$ is an upper bound for $A$.  To prove it is the supremum, we have to show that (b) of Definition \ref{def:supremum} is satisfied.  Notably, take any $b< s$.  Let $\epsilon := s - b$.  By the assumption of $Q$, there exists an $a \in A$ such that $s - \epsilon < a$.  But, by construction $b = s-\epsilon$, so $b$ cannot be an upper bound.
