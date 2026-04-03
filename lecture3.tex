@@ -1,0 +1,121 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 3}
+    
+    \begin{abstract}  
+    Outline: \\
+    - nested interval property \\
+    - Archimedean property \\
+    - density of $\mathbb{Q}$ in $\mathbb{R}$ \\
+    - triangle inequality
+\end{abstract}
+
+\maketitle
+
+Last time, we talked quite exhaustively about upper bounds and different ways of understanding and categorizing them (section 1.3).  We will now focus on consequences of completeness (the notion that every bounded set of real numbers has a least upper bound).
+
+We will use this notion to get an understanding of how sets in $\mathbb{R}$ behave.  
+
+\begin{theorem}{Theorem 1.4.1}
+    For each $n \in \mathbb{N}$, assume we are given a closed interval $I_n = [a_n,b_n] = \{x \in \mathbb{R} \; : \; a_n \leq x \leq b_n\}$.  Assume also that each $I_n$ contains $I_{n+1}$.  Then, the resulting nested sequence of closed intervals
+    \[I_1 \supseteq I_2 \supseteq I_3 \supseteq I_4 \supseteq \cdots\]
+    has a nonempty intersection, that is, $\bigcap\limits_{n=1}^\infty I_n \neq \emptyset$.
+\end{theorem}
+
+What are $P$, $Q$ in this case?  
+\begin{itemize}
+    \item $P$ = ``a sequence of nested closed intervals $I_n = [a_n,b_n]$ with $I_n \supseteq I_{n+1}$"
+    \item $Q$ = `` $\bigcap\limits_{n=1}^\infty I_n \neq \emptyset$"
+\end{itemize}
+
+What is the intuition for this theorem being true? (When the intuition gives you some handholds, this is great!  In this case it does. Sometimes, you will have no intuition for why something is true, and you will have to play around with the definitions and theorems you have handy to find out if something is or is not true without the help intuition.)
+
+\begin{proof}
+    Assume $P$.  Consider the set of left end points $A = \{ a_n \; : \; n \in \mathbb{N}\}$.  Is $A$ bounded? Yes, by $b_n$ for all $n \in \mathbb{N}$ (since the intervals are nested).  Since $A$ is bounded, by the Axiom of Completeness, we can set $x := \sup(A)$.  Thus, $a_n \leq x$ for all $n \in \mathbb{N}$.  Moreover, $x \leq b_n$ for all $n \in \mathbb{N}$ by the property of supremum.  Thus, $x \in \bigcap\limits_{n=1}^\infty I_n$, and therefore $Q$ holds, i.e. the intersection is not empty.
+\end{proof}
+
+\begin{theorem}{Theorem 1.4.2, Archimedean Property}
+\begin{enumerate}
+    \item Given any number $x \in \mathbb{R}$, there exists an $n \in \mathbb{N}$ satisfying $n > x$.
+    \item Given any real number $y > 0$, there exists an $n \in \mathbb{N}$ satisfying $1/n < y$.
+\end{enumerate}
+\end{theorem}
+This is a trivial statement at this point, since we have already assumed the existence of $\mathbb{N}, \mathbb{Z}, \mathbb{Q},$ and $\mathbb{R}$, and the book provides an obnoxious answer as to why we prove it: we will prove it because we can.  The real reason we are proving this right now is actually so that when you do go back and construct these different collections of numbers from scratch, you will need this property to properly relate everything to one another.
+
+\begin{proof}
+\phantom{blah}
+
+\begin{enumerate}
+    \item Assume $\mathbb{N}$ is bounded above.  By AoC then $\mathbb{N}$ has a least upper bound, $\alpha = \sup\mathbb{N}$.  Then, $\alpha - 1$ is not an upper bound for $\mathbb{N}$, and by our Lemma from last time, there exists $n \in \mathbb{N}$ such that $\alpha - 1 < n$.  Thus, $\alpha < n+1$, but $n + 1 \in \mathbb{N}$ implies that $n+1 \leq \alpha$, a contradiction.  
+    \item Let $y > 0$, $y \in \mathbb{R}$.  By (a), there exists an $n$ such that $n > \frac{1}y$; if $n = 0$, add one.  Divide: $y > \frac{1}n$.
+    \end{enumerate}
+\end{proof}
+
+This property, while seemingly innocuous at first, is actually very powerful, and allows us to prove that $\mathbb{Q}$ is dense in $\mathbb{R}$.
+
+\begin{theorem}{Theorem 1.4.3, Density of $\mathbb{Q}$ in $\mathbb{R}$}
+For every $a,b \in \mathbb{R}$ with $a < b$, there exists a rational number $r$ such that $a < r< b$.
+\end{theorem}
+\begin{proof}
+    Case 1: $a < 0$, $b > 0$.  Then $0$ is the rational between!
+    
+    Case 2: $a > 0$, $b > 0$.
+    Note that $b-a > 0$.  Since $b-a$ is a real number, we can use the Archimedean property to say something stronger, notably that there exists $n \in \mathbb{N}$ such that $b-a > \frac{1}n$.  Multiplying by $n$ gives $nb - na > 1$.   Note that by the Archimedean property (a), $na < nb < m$ for some $m \in \mathbb{N}$.  We can indeed choose an $m$ such that $m-1 \leq na < m$.  Then, 
+    \begin{align*}
+        m = (m-1) +1 \leq na + 1< na + (nb - na) = nb.
+    \end{align*}
+    Therefore, 
+    \begin{align*}
+        na < m < nb  \; \implies a < \frac{m}{n} < b,
+    \end{align*}
+    and the claim is proved.
+    
+    Case 3:  $a < 0$, $b < 0$.  Let $B := -a$ and $A := -b$.  Then, $ 0 < A < B$, and we are back in case 2.
+\end{proof}
+
+\begin{corollary}{(1.4.4)}
+    Given any two real numbers $a < b$, there exists an irrational number $t$ satisfying $a < t< b$.
+\end{corollary}
+
+Reading: Theorem 1.4.5 (have them read on their own time how they prove there exists a real number such that its square is 2)
+
+Before we move on to a notion of cardinality (the size of a set) next lecture, I want to remind you all what a function is:
+
+\begin{definition}{(1.2.3)}
+    Given two sets $A$ and $B$, a function from $A$ to $B$ is a rule or mapping that takes each element $x \in A$ and associates it with a single element of $B$.  In this case, we write $f : A \to B$.  Given an element $x \in A$, $f(x)$ represents the element in $B$ associated with $x$ by $f$.  $A$ is called the domain, and the range of $f$ is the subset of $B$ that is the set of outputs $f(x)$ for all $x \in A$.
+\end{definition}
+
+The reason I bring this up now is we define the absolute value function, taking $x \in \mathbb{R}$,
+\begin{align}
+    |x| := \begin{cases}x & x\geq 0 \\ -x & x < 0. \end{cases}
+\end{align}
+This function (and extensions thereof) is extremely powerful, and has one of the most powerful properties used among all math fields to date: for all $x, y \in \mathbb{R}$
+\begin{align}
+    |x+y| \leq |x| + |y|.
+\end{align}
+
+(Prove this together as a class, solicit their feedback.)
+\begin{proof}
+    Case 1: Let $x, y \geq 0$.  By the definition of absolute value function,
+    \[|x+ y| = x+y = |x| + |y|.\]
+
+    Case 2: Let $x,y < 0$.  Then
+    \[|x+y| = -(x+y) = -x -y = |x| + |y|.\]
+
+    Case 3: Let $x < 0, y \geq 0$, $y \geq |x|$. Then 
+    \[|x+y| = y- (-x) = |y| - |x| \leq |x| + |y|.\]
+
+    Case 4: Let $x< 0, y\geq0, y  < |x|$. 
+    Then
+    \[|x+y| = -(y-(-x)) = (-x)-y = |x| - |y| \leq |x| + |y|. \]
+\end{proof}
+
+% If time: have them prove at their tables:
+
+% \begin{theorem}{(Theorem 1.2.6)}
+%     Two real numbers $a$ and $b$ are equal if and only if for every real number $\epsilon > 0$, it follows that $|a-b| < \epsilon$.
+% \end{theorem}
+
+\end{document}
