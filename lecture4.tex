@@ -1,0 +1,90 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 4}
+    
+    \begin{abstract}  
+    Outline: \\
+    - cardinality \\
+    - convergence of sequences
+\end{abstract}
+
+\maketitle
+
+\begin{definition}{(1.4.6)}
+    Let $A,B$ be subsets of some space.  A function $f:A\to B$ is one-to-one (1-1) if $a_1 \neq a_2$ in $A$ implies $f(a_1)\neq f(a_2)$ in $B$.  The function is onto if given any $b \in B$, there exists an $a \in A$ such that $f(a) = b$.
+\end{definition}
+
+We say two sets have the same cardinality if there is a one-to-one and onto (also called bijective) function mapping one to the other.
+
+\begin{itemize}
+\item A set is called \textit{countable} if it has the same cardinality as $\mathbb{N}$.
+\item The rationals $\mathbb{Q}$ are countable (the proof is in your text, but a more intuitive version of the proof is the Cantor Snake, video posted on our Canvas page)
+\item The real numbers are uncountable, i.e. there is no bijective mapping of $\mathbb{N}$ to $\mathbb{R}$; the proof can be done multiple ways, one of which is by contradiction using the nested interval property.  One of the most famous proofs is Cantor's diagonalization argument.
+\item Your text has lovely proofs showing that any interval of the real numbers (really a characteristic one, but the proof can be generalized) has the same cardinality as the real numbers.  They are very straightforward, I recommend reading them.
+\end{itemize}
+
+This means there are at least two different sizes of infinity, one I can count and one I cannot count.  There are actually more, and the end of chapter 1 has a really nice exposition on what these different sizes of infinity are as well as the math history behind this investigation into cardinality.
+
+\newpage
+
+Chapter 2: Sequences \& Series
+
+\begin{definition}{(2.2.1)}
+    A sequence is a function whose domain is $\mathbb{N}$.
+\end{definition}
+
+We could write this as $f : \mathbb{N} \to A$ for some set $A$.  We often shortcut this with the notation $\{a_n \; : n \in \mathbb{N}\}$, or $\{a_n\}_{n=1}^\infty$, or even shorter, $\{a_n\}$.  In this course, $A \subseteq \mathbb{R}$.
+
+\begin{exercise}
+    Come up with sequences that, as $n \to \infty$,
+    \begin{enumerate}
+        \item Goes to $0$
+        \item Goes to $\infty$
+        \item Does not converge to anything (e.g., alternates)
+    \end{enumerate}
+\end{exercise}
+
+Let's formalize this notion of ``goes to."
+
+\begin{definition}
+    A sequence $\{a_n\}$ converges to a real number $a$ if, for all $\epsilon > 0$, there exists $N \in \mathbb{N}$ such that $|a_n - a| < \epsilon$ for all $n \geq N$.
+\end{definition}
+
+\begin{exercise}
+Let us consider the sequence $\left\{\frac{1}n\right\}$. What do you conjecture this sequence converges to?  Draw a number line and see if you can apply the definition for $\epsilon =\frac{1}{\sqrt2}$ and $\epsilon = \frac{2}{101}$.
+\end{exercise}
+
+% Depending on how strong the groups are, have them consequently prove the following theorem; this is what we did in class today, every group save one was able to prove this.
+
+\begin{theorem}
+    The sequence $\left\{\frac1n\right\}$ converges to $0$.
+\end{theorem}
+\begin{proof}
+    Let $\epsilon > 0$ be a real number.  By the Archimedean Property(b), for every $\epsilon > 0$ there exists an $N$ such that $\frac{1}N < \epsilon$.  Since $\frac{1}{n} \leq \frac{1}N$ for any $n \geq N$, the proof is complete.
+\end{proof}
+
+Method of proof for sequence convergence:
+\begin{itemize}
+    \item Choose $\epsilon > 0$ arbitrary (for direct proofs, which nearly all convergence proofs are, this \textit{must} remain arbitrary)
+    \item Find a choice of $N \in \mathbb{N}$ (most of the work is here) such that $|a_N - a| < \epsilon$
+    \item Assume $n\geq N$
+    \item Show that $|a_n -a| < \epsilon$, which should follow straightforwardly from the steps you have done before.
+\end{itemize}
+
+This is the usual definition we often work with, but as we have been talking about there is importance of thinking about properties in different ways different ways...
+
+\begin{definition}{(2.2.4)}
+    Given $a \in \mathbb{R}$ and $\epsilon > 0$, the set \[V_\epsilon(a) := \{ x \in \mathbb{R}: |x-a| < \epsilon \} \]
+    is called an $\epsilon$-neighborhood of $a$.
+\end{definition}
+
+%\textcolor{red}{Have them use this definition to recast Definition 3 with you}
+
+\begin{definition}
+    A sequence $\{a_n\}$ converges to $a$ if for all $\epsilon > 0$ and corresponding $\epsilon$-neighborhood $V_\epsilon(a)$, there exists a point in the sequence after which all the elements are in $V_\epsilon(a)$.
+\end{definition}
+
+
+\end{document}
