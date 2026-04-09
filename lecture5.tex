@@ -2,19 +2,97 @@
 
 \begin{document}
 
-    \title{Lecture 4}
+    \title{Lecture 5}
     
     \begin{abstract}  
     Outline: \\
-    - cardinality \\
-    - convergence of sequences
+    - divergence \\
+    - algebraic and order limit theorems
 \end{abstract}
 
 \maketitle
+
+\begin{definition}
+    A sequence that does not converge is said to diverge.
+\end{definition}
+
+\begin{definition}
+    A sequence $\{a_n\}$ is bounded if there exists $ M \in \mathbb{R}_{>0}$ s.t. $|a_n| \leq M$ for all $n \in \mathbb{N}$.
+\end{definition}
 
 \begin{exercise}
     Show that, if a sequence has a limit, then the limit is unique.
 \end{exercise}
 
+\begin{theorem}
+    A sequence that converges is bounded.
+\end{theorem}
+\begin{proof}
+    Let $\{a_n\}$ be our sequence that converges to $a$.  Then, for all $\epsilon > 0$, there exists an $N \in \mathbb{N}$ such that $|a_n -a| < \epsilon$ for all $n \geq N$. Then, $a_n -a < \epsilon$ implies $a_n < a + \epsilon \leq |a| + \epsilon $, which implies that $|a_n| < |a|+ \epsilon$. Consider the set $\{a_1, \;\ldots, a_{N-1}\}$.  Then, for all $n \in \mathbb{N}$
+    \begin{align*}
+        |a_n| \leq \max \left\{a_1, \;\ldots, a_{N-1}, |a| +\epsilon \right\}.
+    \end{align*}
+    Therefore, the sequence is bounded.
+\end{proof}
+
+\textcolor{red}{(Have them conjecture about the converse and provide an example)}
+
+\begin{exercise}
+    Suppose $\lim a_n = a$, $\lim b_n = b$.
+    Prove 
+    \begin{enumerate}
+        \item $\lim(ca_n) = ca$ $\; \forall \;c \in \mathbb{R}$
+        \item $\lim (a_n + b_n) = a+b$
+        \item (Bonus) $\lim(a_nb_n) = ab$
+    \end{enumerate}
+\end{exercise}
+
+\begin{theorem}{(Algebraic Limit Theorem)}
+Suppose $\lim a_n = a$, $\lim b_n = b$.
+    \begin{itemize}
+        \item $\lim(ca_n) = ca$ $\; \forall \;c \in \mathbb{R}$
+        \item $\lim (a_n + b_n) = a+b$
+        \item $\lim(a_nb_n) = ab$
+        \item $\lim(a_n/b_n) = a/b$ if $b \neq 0$
+    \end{itemize}
+\end{theorem}
+
+\begin{exercise}
+    Prove that $\lim \frac{2n}{n+1} = 2$ two ways: using the definition of convergence only, and then using the Algebraic Limit Theorem. 
+\end{exercise}
+
+\begin{proof}
+    Here is the proof using the definition only.  Let $\epsilon > 0$
+    Consider 
+    \begin{align}
+        \left|\frac{2n}{n+1} -2\right| &= \left|\frac{2n}{n+1} - \frac{2(n+1)}{n+1} \right|
+        \\
+        &= \left|\frac{-2}{n+1}\right|
+        \\
+        &= \frac{2}{n+1}.
+    \end{align}
+    Then, notice that by the Archimedean property(b), there exists $N \in \mathbb{N}$ such that $\frac{1}{N+1} < \frac{1}N < \epsilon/2$. Then, $\frac{2}{N+1} < \epsilon$, and then by the properties of the natural numbers, $\frac{2}{n+1} < \epsilon$ for all $n \geq N$.  
+\end{proof}
+
+\newpage
+\begin{theorem}{(Order Limit Theorem)}
+    Let $\lim a_n = a$, $\lim b_n = b$.
+    \begin{itemize}
+        \item If $a_n \geq 0$ for all $n \in \mathbb{N}$, then $a \geq 0$.
+        \item If $a_n \leq b_n$ for all $n \in \mathbb{N}$, then $a \leq b$.
+        \item If there exists $c \in \mathbb{R}$ such that $c \leq b_n$, then $c \leq b$.  Similarly, if $d \in \mathbb{R}$ such that $a_n \leq d$, then $a \leq d$.
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}
+    A sequence $\{a_n\}$ is increasing if $a_n \leq a_{n+1}$ for all $n \in \mathbb{N}$, and decreasing if $a_n \geq a_{n+1}$ for all $n \in \mathbb{N}$.  A sequence is called monotonic if it is either increasing or decreasing.
+\end{definition}
+
+\textcolor{red}{Have them think for a minute about what might happen if a sequence is monotone and bounded.}
+
+\begin{theorem}{(Monotone Convergence Theorem)}
+    If a sequence is monotone and bounded, then it converges.
+\end{theorem}
+Prove next time.
 
 \end{document}
