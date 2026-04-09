@@ -57,9 +57,23 @@ Suppose $\lim a_n = a$, $\lim b_n = b$.
     \end{itemize}
 \end{theorem}
 
-Notice that in these proofs you wrote, you found arbitrary $\epsilon$ for a new sequence as a function of the $\epsilon$ for a related sequence.  Review these proofs in your textbook as well.
+\begin{exercise}
+    Prove that $\lim \frac{2n}{n+1} = 2$ two ways: using the definition of convergence only, and then using the Algebraic Limit Theorem. 
+\end{exercise}
 
-\newpage
+\begin{proof}
+    Here is the proof using the definition only.  Let $\epsilon > 0$
+    Consider 
+    \begin{align}
+        \left|\frac{2n}{n+1} -2\right| &= \left|\frac{2n}{n+1} - \frac{2(n+1)}{n+1} \right|
+        \\
+        &= \left|\frac{-2}{n+1}\right|
+        \\
+        &= \frac{2}{n+1}.
+    \end{align}
+    Then, notice that by the Archimedean property(b), there exists $N \in \mathbb{N}$ such that $\frac{1}{N+1} < \frac{1}N < \epsilon/2$. Then, $\frac{2}{N+1} < \epsilon$, and then by the properties of the natural numbers, $\frac{2}{n+1} < \epsilon$ for all $n \geq N$.  
+\end{proof}
+
 \begin{theorem}{(Order Limit Theorem)}
     Let $\lim a_n = a$, $\lim b_n = b$.
     \begin{itemize}
@@ -68,5 +82,16 @@ Notice that in these proofs you wrote, you found arbitrary $\epsilon$ for a new 
         \item If there exists $c \in \mathbb{R}$ such that $c \leq b_n$, then $c \leq b$.  Similarly, if $d \in \mathbb{R}$ such that $a_n \leq d$, then $a \leq d$.
     \end{itemize}
 \end{theorem}
+
+\begin{definition}
+    A sequence $\{a_n\}$ is increasing if $a_n \leq a_{n+1}$ for all $n \in \mathbb{N}$, and decreasing if $a_n \geq a_{n+1}$ for all $n \in \mathbb{N}$.  A sequence is called monotonic if it is either increasing or decreasing.
+\end{definition}
+
+\textcolor{red}{Have them think for a minute about what might happen if a sequence is monotone and bounded.}
+
+\begin{theorem}{(Monotone Convergence Theorem)}
+    If a sequence is monotone and bounded, then it converges.
+\end{theorem}
+Prove next time.
 
 \end{document}
