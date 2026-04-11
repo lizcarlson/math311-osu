@@ -2,50 +2,41 @@
 
 \begin{document}
 
-    \title{Lecture 5}
+    \title{Lecture 6}
     
     \begin{abstract}  
     Outline: \\
-    - divergence \\
-    - algebraic and order limit theorems
+    - proofs of Algebraic Limit Theorem and Order Limit Theorem\\
+    - Monotone Convergence Theorem (state and prove)
 \end{abstract}
 
 \maketitle
 
-\begin{definition}
-    A sequence that does not converge is said to diverge.
-\end{definition}
+Before we get started, we are going to use something very fundamental (which you will prove on your homework solely using the properties of absolute values):
+\begin{align}
+    |a_n-a| < \epsilon \implies -\epsilon < a_n-a< \epsilon 
+\\
+    |a-a_n| < \epsilon \implies -\epsilon < a-a_n< \epsilon.
+\end{align}
 
-\begin{definition}
-    A sequence $\{a_n\}$ is bounded if there exists $ M \in \mathbb{R}_{>0}$ s.t. $|a_n| \leq M$ for all $n \in \mathbb{N}$.
-\end{definition}
-
-\begin{exercise}
-    Show that, if a sequence has a limit, then the limit is unique.
-\end{exercise}
-
-\begin{theorem}
-    A sequence that converges is bounded.
-\end{theorem}
-\begin{proof}
-    Let $\{a_n\}$ be our sequence that converges to $a$.  Then, for all $\epsilon > 0$, there exists an $N \in \mathbb{N}$ such that $|a_n -a| < \epsilon$ for all $n \geq N$. Then, $- \epsilon < a_n -a < \epsilon$ implies $-|a| - \epsilon \leq a-\epsilon < a_n$ and $a_n < a + \epsilon \leq |a| + \epsilon $.  This implies that $|a_n| < |a|+ \epsilon$. Consider the set $\{a_1, \;\ldots, a_{N-1}\}$.  Then, for all $n \in \mathbb{N}$
-    \begin{align*}
-        |a_n| \leq \max \left\{a_1, \;\ldots, a_{N-1}, |a| +\epsilon \right\}.
-    \end{align*}
-    Therefore, the sequence is bounded.
-\end{proof}
-
-Is the converse true?  No, e.g., $\{-1^n\}$.
-
-\begin{exercise}
-    Suppose $\lim a_n = a$, $\lim b_n = b$.
-    Prove 
-    \begin{enumerate}
-        \item $\lim(ca_n) = ca$ $\; \forall \;c \in \mathbb{R}$
-        \item $\lim (a_n + b_n) = a+b$
-        \item (Bonus) $\lim(a_nb_n) = ab$
-    \end{enumerate}
-\end{exercise}
+% \begin{proof}
+%     Suppose that $a_n -a > 0$.  Then 
+%     \begin{align}
+%         |a_n-a| &< \epsilon \\
+%         0 < a_n -a &< \epsilon  \\
+%         -\epsilon < a_n -a &< \epsilon.
+%     \end{align}
+%     Now, if $a_n-a < 0$, then 
+%     \begin{align}
+%         |a_n-a| &< \epsilon \\
+%         0 < a -a_n &< \epsilon  \\
+%         -\epsilon < a-a_n &< \epsilon
+%         \\
+%         \epsilon > -(a-a_n) &> -\epsilon
+%         \\
+%         \epsilon > a_n-a &> -\epsilon
+%     \end{align}
+% \end{proof}
 
 \begin{theorem}{(Algebraic Limit Theorem)}
 Suppose $\lim a_n = a$, $\lim b_n = b$.
@@ -56,13 +47,71 @@ Suppose $\lim a_n = a$, $\lim b_n = b$.
         \item $\lim(a_n/b_n) = a/b$ if $b \neq 0$
     \end{itemize}
 \end{theorem}
+\begin{proof}[(c)]
+    Let $\epsilon > 0$.  Without loss of generality, suppose $a \neq 0$.  \textcolor{red}{We want to take advantage of the fact that we know that $\{a_n\}$ and $\{b_n\}$ converge to $a$ and $b$, respectively.  Another way to say this is $\{a_n -a\}, \{b_n-b\}$ are sequences that go to $0$.  Our goal is to figure out where those features appear in our problem.} Consider adding and subtracting $ab_n$, then using triangle inequality:
+    \begin{align}
+        |a_nb_n -ab| &= |a_nb_n - ab_n + ab_n - ab|
+        \\
+        &=
+        |(a_n-a)b_n| + |a(b_n-b)|
+        \\
+        &= |a_n-a||b_n| + |a||b_n-b|.
+    \end{align}
+\textcolor{red}{Now, $a$ is a fixed value, so this is good, I know for sure that the second term can be made small.  But, how do I know that the first term can be made small?  Right now, it seems like I am in the same predicament, as I did not get rid of the fact that I still have the product $a_nb_n$.  So, I need to ``get rid" of $b_n$ somehow.  Ah, I can bound!}  Since $b_n$ is a convergent sequence, there exists an $M \in \mathbb{R}$ such that $|b_n| \leq M$.  Therefore,  
+\begin{align}
+    |a_n-a||b_n| + |a||b_n-b|
+    &\leq |a_n-a|M + |a||b_n-b|.
+\end{align}
+\textcolor{red}{At this point, I have fixed $\epsilon > 0$ arbitrary at the beginning.  I need to find an $N$ such that $|a_nb_n-ab| < \epsilon$.  I do this by using the fact that I can pick \textit{\textbf{any}} epsilon and there will exist an $N$ such that the $a_n$ sequence will converge, and similarly an $N$ such that the $b_n$ sequence will converge.} Let $N_a \in \mathbb{N}$ such that $|a_n-a| < \frac{\epsilon}2\cdot \frac{1}M$ for all $n \geq N_a$.  Let $N_b \in \mathbb{N}$ such that $|b_n-b| < \frac{\epsilon}2\cdot \frac{1}{|a|}$.  Let $N := \max\{N_a,N_b\}$.  Then, for all $n \geq N$,
+\begin{align}
+    |a_nb_n -ab| &\leq |a_n-a|M + |a||b_n-b|
+    \\
+    &\leq \left( \frac{\epsilon}2\cdot \frac{1}M \right)M  + |a| \left(\frac{\epsilon}2\cdot \frac{1}{|a|} \right)
+    \\
+    &= \frac{\epsilon}2+ \frac{\epsilon}2
+    \\
+    &= \epsilon.
+\end{align}
+\textcolor{red}{Why can we choose $a\neq 0$ without loss of generality?  What happens in the case when $a= b= 0$?}
+\end{proof}
+\begin{proof}[(d)]
+    To prove this, let us consider the sequence $\left\{\frac{a_n}{b_n} - \frac{a}b\right\}$ and show it converges to $0$.  Notably, 
+    \begin{align}
+        \left|\frac{a_n}{b_n} - \frac{a}b\right| &= \left|\frac{ba_n-ab_n}{bb_n}\right|
+        \\
+        &=
+        \left|\frac{b(a_n-a) + a(b-b_n)}{bb_n}\right|.
+    \end{align}
+    \textcolor{red}{In this case, the numerator will go to $0$ as we take $n$ large, but the denominator goes to some value, and how do we know the ratio goes to $b$?  We don't, we need to prove it, and we prove it primarily by NOT using the fact that $\{b_n\}$ has a limit, but that because it converges, it is bounded.}
+    Choose $N_0 \in \mathbb{N}$ such that $|b_n- b| < 1$ for all $n \geq N_0$, which, undoing the absolute values, means that $-1 < b_n-b< 1$, or $b-1 < b_n$ (\textcolor{red}{If $b=1,$ simply choose $\epsilon = 2$ and run through the proof again}).  Therefore, using the triangle inequality,
+    \begin{align}
+        \left|\frac{b(a_n-a) + a(b-b_n)}{bb_n}\right|
+        &\leq
+        \left|\frac{b(a_n-a) + a(b-b_n)}{b(b-1)}\right|
+        \\
+        &\leq \left|\frac{b}{b(b-1)}\right| |a_n-a| + \left|\frac{b}{b(b-1)}\right||b_n-b|.
+    \end{align}
+Let $\epsilon > 0$.  Choose $N_a \in \mathbb{N}$ such that $|a_n-a| < \frac{\epsilon}2 \cdot \left|\frac{b(b-1)}b\right|$ for all $n \geq N_a$, and choose $N_b \in \mathbb{N}$ such that $|b_n-b| < \frac{\epsilon}2 \cdot \left|\frac{b(b-1)}a\right|$.  Let $N = \max\{N_0, N_a, N_b\}$.  Then, for all $n \geq N$,
+\begin{align}
+    \left|\frac{a_n}{b_n} - \frac{a}b\right| 
+    &\leq 
+    \left|\frac{b}{b(b-1)}\right| |a_n-a| + \left|\frac{b}{b(b-1)}\right||b_n-b|
+    \\
+    &\leq \left|\frac{b}{b(b-1)}\right| \left(\frac{\epsilon}2 \cdot \left|\frac{b(b-1)}a\right|\right)
+    \\
+    &\qquad + \left|\frac{b}{b(b-1)}\right|\left(\frac{\epsilon}2 \cdot \left|\frac{b(b-1)}a\right|\right)
+    \\
+    &= \epsilon.
+\end{align}
+Thus, $\frac{a_n}{b_n} \to \frac{a}b$.
+\end{proof}
 
 \begin{exercise}
-    Prove that $\lim \frac{2n}{n+1} = 2$ two ways: using the definition of convergence only, and then using the Algebraic Limit Theorem. 
+    Prove that $\lim \frac{2n}{n+1} = 2$ two ways: using only the definition of convergence of a sequence, and then using the Algebraic Limit Theorem. 
 \end{exercise}
 
 \begin{proof}
-    Here is the proof using the definition only.  Let $\epsilon > 0$
+    Here is the proof using the definition only.  Let $\epsilon > 0$.
     Consider 
     \begin{align}
         \left|\frac{2n}{n+1} -2\right| &= \left|\frac{2n}{n+1} - \frac{2(n+1)}{n+1} \right|
@@ -71,7 +120,14 @@ Suppose $\lim a_n = a$, $\lim b_n = b$.
         \\
         &= \frac{2}{n+1}.
     \end{align}
-    Then, notice that by the Archimedean property(b), there exists $N \in \mathbb{N}$ such that $\frac{1}{N+1} < \frac{1}N < \epsilon/2$. Then, $\frac{2}{N+1} < \epsilon$, and then by the properties of the natural numbers, $\frac{2}{n+1} < \epsilon$ for all $n \geq N$.  
+    Then, notice that by the Archimedean property(b), there exists $N \in \mathbb{N}$ such that $\frac{1}{N+1} < \frac{1}N < \epsilon/2$. Thus, $\frac{2}{N+1} < \epsilon$, and then by the properties of the natural numbers, $\frac{2}{n+1} < \epsilon$ for all $n \geq N$.  
+
+    Now, here is the proof using the Algebraic Limit Theorem.  Take the sequence and divide it by $n$ in the numerator and the denominator:
+    \begin{align}
+        \frac{2n}{n+1} \cdot \frac{1/n}{1/n}
+        &= \frac{2}{1+1/n}.
+    \end{align}
+    Now, the numerator is simply $2$, and the denominator is the sequence $1+1/n$, which (by part (b) of the Algebraic Limit Theorem and the fact that we have proven multiple times that $1/n \to 0$) converges to $1$.  By part (d) of the Algebraic Limit Theorem, the sequence converges to $2/1 = 2$.
 \end{proof}
 
 \begin{theorem}{(Order Limit Theorem)}
@@ -82,16 +138,32 @@ Suppose $\lim a_n = a$, $\lim b_n = b$.
         \item If there exists $c \in \mathbb{R}$ such that $c \leq b_n$, then $c \leq b$.  Similarly, if $d \in \mathbb{R}$ such that $a_n \leq d$, then $a \leq d$.
     \end{itemize}
 \end{theorem}
+\begin{proof}[(a)]
+    By assumption, $a_n \geq 0$ and for all $\epsilon > 0$, there exists an $N \in \mathbb{N}$ such that $|a_n -a| < \epsilon $ for all $n \geq N$.  Suppose $a < 0$.  Then, let $\epsilon = |a|/2$.  Then, $|a_n-a| < |a|/2$, which implies that $-|a|/2 < a-a_n < |a|/2$.  Since $a < 0$, then 
+    \begin{align}
+       -|a|/2 < a-a_n < |a|/2
+       &=
+       -|a|/2 < -|a| - a_n < |a|/2
+       \\
+       &=
+       |a|/2 < -a_n < 3|a|/2.
+    \end{align}
+    This implies that $-a_n > 0$, which implies that $a_n < 0$.  Therefore, we have a contradiction.
+\end{proof}
 
 \begin{definition}
     A sequence $\{a_n\}$ is increasing if $a_n \leq a_{n+1}$ for all $n \in \mathbb{N}$, and decreasing if $a_n \geq a_{n+1}$ for all $n \in \mathbb{N}$.  A sequence is called monotonic if it is either increasing or decreasing.
 \end{definition}
 
-\textcolor{red}{Have them think for a minute about what might happen if a sequence is monotone and bounded.}
-
 \begin{theorem}{(Monotone Convergence Theorem)}
     If a sequence is monotone and bounded, then it converges.
 \end{theorem}
-Prove next time.
+
+\begin{proof}
+    Without loss of generality, let $\{a_n\}$ be a sequence such that $a_{n+1} \geq a_n$.  Let $M > 0$ be such that $|a_n| \leq M$.  Let $\epsilon >0$.
+
+    Claim: The sequence $\{a_n\}$ converges to $a:=\sup\{a_n: n\in\mathbb{N}\}$.
+    Let us note that $a$ is the least upper bound for $\{a_n\}$, and therefore $a-\epsilon$ is not an upper bound for $\{a_n\}$.  Notably, recall our Lemma, for every $\epsilon >0$, there exists an $N \in \mathbb{N}$ such that $a-\epsilon < a_N < a$.  Since $a_n$ is monotonically increasing, it also holds that for all $n \geq N$, $a-\epsilon < a_n < a$.  This implies, subtracting $a$ from all sides, that $-\epsilon < a_n - a < 0$.  This implies that $-\epsilon < a_n - a < 0 < \epsilon$, and therefore, $|a_n-a| < \epsilon$.
+\end{proof}
 
 \end{document}
