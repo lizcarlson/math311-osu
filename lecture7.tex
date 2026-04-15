@@ -1,0 +1,123 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 7}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Intro to series, Cauchy condensation test \\
+    - Subsequences
+\end{abstract}
+
+\maketitle
+
+Let's look at an example where the Monotone Convergence Theorem helps us.
+
+\begin{definition}
+    Let $\{b_n\}$ be a sequence.  An infinite series is a formal expression of the form
+    \begin{align}
+        \sum\limits_{n=1}^\infty b_n = b_1 + b_2 + b_3 + \cdots
+    \end{align}
+    We define the corresponding sequence of partial sums 
+    \begin{align*}
+        s_m = b_1 + b_2 + \cdots + b_m,
+    \end{align*}
+    and say that the series converges to $B$ if the sequence of partial sums converges to $B$.  This is denoted $\sum\limits_{n=1}^\infty b_n = B$.
+\end{definition}
+
+\begin{example}
+    Consider $\sum\limits_{n=1}^\infty \frac{1}{n^2}$.  Then,
+    \begin{align}
+        s_m &= 1 + \frac1{2\cdot 2} + \frac1{3\cdot3} + \frac1{4\cdot4} + \cdots + \frac1{m\cdot m}
+        \\
+        &\leq
+        1 + \frac1{2\cdot 1} + \frac1{3\cdot2} + \frac1{4\cdot3} + \cdots + \frac1{m\cdot (m-1)}
+        \\ \label{telescope_1n2}
+        &=
+        1 + \left(1-\frac12\right) + \left(\frac12 - \frac13 \right) + \left( \frac13-\frac14\right) + \cdots + \left(\frac{1}{m-1}-\frac{1}{m}\right)
+        \\
+        &= 1 + 1 - \frac{1}m\\
+        &\leq 2.
+    \end{align}
+    \textcolor{red}{The sequence was written in such a way that it is called \textit{telescoping} in \eqref{telescope_1n2}.}
+    Every partial sum is therefore bounded by $2$.  Thus, we have a monotone sequence that is bounded, and therefore converges (to some limit less than $2$).
+\end{example}
+
+\begin{example}
+    Consider $\sum\limits_{n=0}^\infty \frac1n$.  Then
+    \begin{align}
+        s_m = 1 + \frac12 + \frac13 + \frac14 + \cdots
+    \end{align}
+and while intution says is should converge, it doesn't.
+\begin{align}
+    s_{2^k} &= 1 + \frac12 + \frac13 + \frac14 + \cdots
+    \\
+    &= 1 + \frac12 + \left(\frac13 + \frac14\right) + \left(\frac15 +\frac16 + \frac17+ \frac18 \right) + \cdots \left(\frac{1}{2^{k-1}+1} + \cdots \frac{1}{2^k}\right)
+    \\
+    &> 
+    1 + \frac12 + \left(\frac14 + \frac14\right) + \left(\frac18 +\frac18 + \frac18+ \frac18 \right) + \cdots 2^{k-1}\cdot \frac{1}{2^k}
+    \\
+    &= 1 + k\cdot \frac12.
+\end{align}
+This implies that, since $k$ increases monotonically to infinity, so does the series, and therefore the series diverges.
+\end{example}
+This proof structure in this second example leads to something known as the Cauchy Condensation Theorem.
+\begin{theorem}
+    Suppose $\{b_n\}$ is decreasing and $b_n \geq 0$ for all $n \in \mathbb{N}$.  Then $\sum\limits_{n=1}^\infty b_n$ converges if and only if $\sum\limits_{n=0}^\infty 2^nb(2^n)$ converges.
+\end{theorem}
+\begin{proof}
+    ($\impliedby$)  Suppose $\sum\limits_{n=0}^\infty 2^nb(2^n)$ converges, i.e. the partial sums
+    \begin{align}
+        t_k = b_1 + 2b_2 + 4b_4 + \cdots + 2^kb_{2^k}
+    \end{align}
+    converge; even lesser, they are bounded by $M > 0$.  Because $b_n \geq 0$, the partial sums
+    \begin{align*}
+        s_m = b_1 + \cdots + b_m
+    \end{align*}
+    form a monotonically increasing sequence.  Thus, thanks to the monotone convergence theorem, I only need show $\{s_m\}$ is bounded for all $m \in \mathbb{N}$.  Fix $m \in \mathbb{N}$ arbitrary.  Choose $k$ such that $m \leq 2^{k+1}-1$.  Then, since we assumed $b_{n+1}\leq b_n$,
+    \begin{align}
+        s_{2^{k+1}-1} &= b_1 + (b_2+b_3) + (b_4+\cdots+b_7) + \cdots + (b_{2^k} + \cdots b_{2^{k+1}-1})
+        \\
+        &\leq b_1 + 2b_2 + 4b_4 \cdots + 2^kb_{2^k}
+        \\&= t_k.
+    \end{align}
+    Thus, $s_m \leq t_k \leq M$.  Thus, since $s_m$ is monotonic and bounded, it converges.
+    ($\implies$) Prove the contrapositive (assume that $\sum\limits_{n=0}^\infty 2^nb(2^n)$ diverges and prove $\sum\limits_{n=0}^\infty b(n)$ diverges). \textcolor{red}{Prove on your own.}
+\end{proof}
+\begin{corollary}
+    The series $\sum\limits_{n=1}^\infty \frac{1}{n^p}$ converges if and only if $p >1$.
+\end{corollary}
+(will touch on later when we get to some facts about geometric series)
+
+Now, let's move out of this case of series as sequences of partial sums, and back to some important properties of sequences.
+
+\begin{definition}
+    Let $\{a_n\}$ be a sequence of real numbers and let $n_1 < n_2< n_3 < \cdots$ be an increasing sequence of natural numbers.  Then the sequence
+    \begin{align*}
+        a_{n_1}, a_{n_2}, a_{n_3}, \cdots
+    \end{align*}
+    is called a subsequence of $\{a_n\}_{n=1}^\infty$ and is denoted by $\{a_{n_j}\}_{j=1}^\infty$, where $j \in \mathbb{N}$ now indexes the sequence.
+\end{definition}
+\textcolor{blue}{Note the connection to cardinality.}
+
+\textcolor{red}{Recall that another way of writing a sequence is as a function $a_n: \mathbb{N} \to \mathbb{R}$.  In this case, we are also considering a (increasing) sequence of natural numbers $n_j : \mathbb{N} \to \mathbb{N}$, and thus a subsequence is simply a composition of these functions, i.e., $a_{n_j}:= a_n \circ n_j$.}
+
+\begin{exercise}
+    Let $\{1, 1/2, 1/3, 1/4, ...\}$ be a sequence.
+    \begin{itemize}
+        \item Is $\{1, 1/2, 1/4, 1/8, ...\}$ a subsequence?  Why or why not?
+        \item Is $\{1, 1/10, 1/5, 1/100, 1/50, 1/1000, \ldots\}$ a subsequence?  Why or why not?
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Find two subsequences of 
+    \begin{enumerate}
+        \item $1/n$
+        \item $(-1)^n$.
+    \end{enumerate}
+    Conjecture what you think these subsequences converge to.
+\end{exercise}
+
+\end{document}

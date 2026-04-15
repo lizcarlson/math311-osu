@@ -1,0 +1,40 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 8}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Bolzano-Weierstrass theorem
+\end{abstract}
+
+\maketitle
+
+\begin{exercise}
+Prove the following theorem.
+\begin{theorem}
+    Subsequences of a convergent sequence converge to the same limit as the original sequence.
+\end{theorem}
+\end{exercise}
+\textcolor{red}{Ask them to develop their intuition for the veracity of this theorem by drawing a picture.}
+\begin{proof}
+    Let $\{a_n\}$ be a sequence that converges to $a$, i.e., for all $\epsilon > 0$, there exists $N \in \mathbb{N}$ such that $|a_n-a| < \epsilon$.  Let $\{a_{n_j}\}$ be a subsequence.  Recall that $n_j:\mathbb{N}\to \mathbb{N}$ is an increasing sequence of natural numbers.  Then, for all $\epsilon > 0$, then we can find a $J \in\mathbb{N}$ such that $n_j > n_J > N$, and therefore $|a_{n_j} -a| < \epsilon$.
+\end{proof}
+
+Now that we have more theorems, we can improve our backswing.  
+\begin{example}
+    Consider a sequence $1> b > b^2 > b^3 > \cdots > 0$.  Then by the Monotone Convergence Theorem, the sequence has to converge to something $x$, but it does not tell us what. \textcolor{red}{What do you think it converges to? Does your intuition change if you replace the $>$ signs with $\geq$ signs?} Take the subsequence $\{b^{2n}\}$.  Note that this is simply $\{b^n\cdot b^n\}$, and by the Algebraic Limit Theorem, this converges to $x\cdot x = x^2$.  But, since subsequences converge to the same limit as the original sequence, this implies that $x^2 =x$, which implies $x = 0$ or $1$.  Since $x <1$, then $x=0$.
+\end{example}
+
+Finally, let's end on one of the most important theorems in all of real analysis.
+
+\begin{theorem}{(Bolzano-Weierstrass Theorem})
+    Every bounded sequence contains a convergent subsequence.
+\end{theorem}
+
+Proof next time
+\begin{proof}
+    Let $\{a_n\}$ be a bounded sequence, i.e. there exists $M > 0$ such that $|a_n| \leq M$ for all $n \in \mathbb{N}$.  \textcolor{red}{Draw picture here.}  The, $a_n \in [-M,M]$.  Cut the interval in half, considering two intervals $[-M,0]$ and $[0,M]$.  Then, one of these two intervals contains infinitely many $a_n$ (\textcolor{red}{If neither half does, then only finitely many points in the sequence are contained in the interval $[-M,M]$, a contradiction that the whole sequence is bounded.}
+\end{proof}
+\end{document}
