@@ -1,0 +1,68 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Homework 3}
+    \begin{abstract} Solve the following problems.  Due April 22nd in class. \end{abstract}
+    \maketitle
+
+\begin{exercise}
+    Prove 
+    \begin{enumerate}
+        \item $\lim\limits_{n\to\infty} \frac{4n^3+3n}{n^3-6} = 4$
+        \item Suppose $a_n \to a$; prove $\sqrt{a_n}\to\sqrt{a}$
+        \item $\cos(n\pi/3)$ diverges
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Prove $\lim\limits_{n\to\infty} a_n = 0$ if and only if $\lim\limits_{n\to\infty} |a_n| = 0$.
+\end{exercise}
+
+\begin{exercise}
+    Let $\{a_n\}$ be a sequence that converges.
+    \begin{enumerate}
+        \item Show that if $a_n \geq a$, then $\lim\limits_{n\to\infty} a_n \geq a$.
+        \item Show that if $a_n \leq b$, then $\lim\limits_{n\to\infty} a_n \leq b$.
+        \item Conclude that if all but finitely many $a_n$ belong to $[a,b]$, then $\lim\limits_{n\to\infty} a_n \in [a,b]$.
+    \end{enumerate}
+\end{exercise}
+
+For $n\in\mathbb{N}$ let $n!$ denote $1\cdot 2 \cdot 3 \cdots n$, and let $0!=1$.  Define
+\begin{align*}
+    n\choose k &= \frac{n!}{k!(n-k)!} \quad k = 0,1,...,n.
+\end{align*}
+The binomial theorem asserts that 
+\begin{align*}
+    (a+b)^n = {n\choose 0}a^n + {n\choose 1}a^{n-1}b + {n\choose 2}a^{n-2}b^2 + \cdots + {n\choose n-1}ab^{n-1}+{n\choose n}b^{n}
+\end{align*}
+
+\begin{exercise}
+    Use the binomial theorem to help prove
+    \begin{enumerate}
+        \item $\lim\limits_{n\to\infty} a^n = 0$ if $|a|<1$.
+        \item $\lim\limits_{n\to\infty} n^{1/n} = 1$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    \begin{enumerate}
+        \item Show that if $\lim\limits_{n\to\infty} a_n = \infty$ and $k>0$, then $\lim\limits_{n\to\infty} ka^n = \infty$.
+        \item  Show that $\lim\limits_{n\to\infty} a_n = \infty$ if and only if $\lim\limits_{n\to\infty} (-a_n) = -\infty$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Let $a_1=1$ and $a_{n+1} = \frac{n}{n+1}a_n^2$ for $n\geq 1$.
+    \begin{enumerate}
+        \item Find $a_2, a_3,$ and  $a_4$.
+        \item Show that $\lim\limits_{n\to\infty} a_n$ exists.
+        \item Prove that $\lim\limits_{n\to\infty} a_n=0.$
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Explain why the Monotone Convergence Theorem fails if we consider working only in the rationals $\mathbb{Q}$.
+\end{exercise}
+
+\end{document}
