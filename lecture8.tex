@@ -6,7 +6,9 @@
     
     \begin{abstract}  
     Outline: \\
-    - Bolzano-Weierstrass theorem
+    - Subsequences (continued) \\
+    - Bolzano-Weierstrass theorem \\
+    - Definition of Cauchy sequences
 \end{abstract}
 
 \maketitle
@@ -17,7 +19,7 @@ Prove the following theorem.
     Subsequences of a convergent sequence converge to the same limit as the original sequence.
 \end{theorem}
 \end{exercise}
-\textcolor{red}{Ask them to develop their intuition for the veracity of this theorem by drawing a picture.}
+%\textcolor{red}{Ask them to develop their intuition for the veracity of this theorem by drawing a picture.}
 \begin{proof}
     Let $\{a_n\}$ be a sequence that converges to $a$, i.e., for all $\epsilon > 0$, there exists $N \in \mathbb{N}$ such that $|a_n-a| < \epsilon$.  Let $\{a_{n_j}\}$ be a subsequence.  Recall that $n_j:\mathbb{N}\to \mathbb{N}$ is an increasing sequence of natural numbers.  Then, for all $\epsilon > 0$, then we can find a $J \in\mathbb{N}$ such that $n_j > n_J > N$, and therefore $|a_{n_j} -a| < \epsilon$.
 \end{proof}
@@ -33,8 +35,19 @@ Finally, let's end on one of the most important theorems in all of real analysis
     Every bounded sequence contains a convergent subsequence.
 \end{theorem}
 
-Proof next time
 \begin{proof}
-    Let $\{a_n\}$ be a bounded sequence, i.e. there exists $M > 0$ such that $|a_n| \leq M$ for all $n \in \mathbb{N}$.  \textcolor{red}{Draw picture here.}  The, $a_n \in [-M,M]$.  Cut the interval in half, considering two intervals $[-M,0]$ and $[0,M]$.  Then, one of these two intervals contains infinitely many $a_n$ (\textcolor{red}{If neither half does, then only finitely many points in the sequence are contained in the interval $[-M,M]$, a contradiction that the whole sequence is bounded.}
+    Let $\{a_n\}$ be a bounded sequence, i.e. there exists $M > 0$ such that $|a_n| \leq M$ for all $n \in \mathbb{N}$.  %\textcolor{red}{Draw picture here.}  
+    The, $a_n \in [-M,M]$.  Cut the interval in half, considering two intervals $[-M,0]$ and $[0,M]$.  Then, one of these two intervals contains infinitely many $a_n$ (\textcolor{red}{If neither half does, then only finitely many points in the sequence are contained in the interval $[-M,M]$, a contradiction that the whole sequence is bounded.})  Take the interval with the infinitely many $a_n$ and call it $I_1$.  Cut $I_1$ in half, taking the half that contains infinitely many $a_n$, and label it $I_2$.  Continuing this process generates a sequence of nested intervals 
+    \begin{align}
+        I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots
+    \end{align}
+    which by construction are closed.  The Nested Interval Property states $\bigcap\limits_{k=1}^\infty I_k \neq \emptyset$, notably there exists $x \in I_k$ for all $k \in \mathbb{N}$.  Moreover, the length of the interval $I_k$ is $M\cdot 2^{-k+1}$.  This implies that the length of the intervals converge to $0$ (by our previous example and Algebraic Limit Theorem (a)).  Let $\epsilon > 0$.  Choose $k$ such that the length of $I_k$ is less than $\epsilon$.  Since infinitely many $a_n$ are contained in $I_k$ for every $k$, there exists $N$ such that for all $n \geq N$, $a_n \in I_k$.  Since $x \in I_k$, and $I_k$'s width is $< \epsilon$, then the distance between $a_n $ and $x$ is less than $\epsilon$ for all $n \geq N$.  In other words, $|a_n -x| < \epsilon$.
 \end{proof}
+
+This theorem, and related versions of this theorem, is one of the most fundamental theorems of analysis, used to prove a variety of significant results.  For example, a version of this theorem for more complex spaces was used to prove the existence of solutions to the 2D Navier-Stokes equations in 1934.
+
+\begin{definition}
+    A sequence $\{a_n\}$ is called a Cauchy sequence if for every $\epsilon > 0$, there exists an $n \in \mathbb{N}$ such that for any $m,n\geq N$, $|a_n-a_m|< \epsilon$.
+\end{definition}
+
 \end{document}

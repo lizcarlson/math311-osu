@@ -1,0 +1,36 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 8}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Cauchy sequences
+\end{abstract}
+
+\maketitle
+
+\begin{definition}
+    A sequence $\{a_n\}$ is called a Cauchy sequence if for every $\epsilon > 0$, there exists an $n \in \mathbb{N}$ such that for any $m,n\geq N$, $|a_n-a_m|< \epsilon$.
+\end{definition}
+
+\begin{exercise}
+    Prove that every convergent sequence is Cauchy.
+\end{exercise}
+
+\begin{exercise}
+    Come up with an example of a Cauchy sequence in the rationals that is not convergent in the rationals.
+\end{exercise}
+
+\begin{exercise}
+    Prove Cauchy sequences are bounded.
+\end{exercise}
+\begin{proof}
+    Taking $\epsilon = 1$, there exists $N$ such that $|x_n - x_N| < 1$ for all $n \geq N$.  Then reverse triangle inequality says $||x_n| - |x_N|| \leq |x_n - x_N| < 1$, and therefore $|x_n| < |x_N| + 1$.  Thus, an upper bound is
+    \begin{align}
+        M = \max\{|x_1|, ..., |x_N|, |x_N|+1\}.
+    \end{align}
+\end{proof}
+
+\end{document}
