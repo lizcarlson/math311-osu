@@ -16,11 +16,7 @@
 \end{definition}
 
 \begin{exercise}
-    Prove that every convergent sequence is Cauchy.
-\end{exercise}
-
-\begin{exercise}
-    Come up with an example of a Cauchy sequence in the rationals that is not convergent in the rationals.
+    Come up with 2 examples of a Cauchy sequence in the rationals that is not convergent in the rationals.
 \end{exercise}
 
 \begin{exercise}
@@ -32,5 +28,27 @@
         M = \max\{|x_1|, ..., |x_N|, |x_N|+1\}.
     \end{align}
 \end{proof}
+
+\begin{exercise}
+    Prove that every convergent sequence in $\mathbb{R}$ is Cauchy.
+\end{exercise}
+
+\begin{theorem}
+    A sequence in $\mathbb{R}$ converges if and only if it is a Cauchy sequence.
+\end{theorem}
+\begin{proof}
+    $(\implies)$ see Exercise 1
+
+    $(\impliedby)$  Let $\{x_n\}$ be a Cauchy sequence.  Since it is bounded, by the Bolzano-Weierstrass Theorem there exists a subsequence $\{x_{n_k}\}$ that converges to a limit we call $x$.  Let $\epsilon > 0$, then there exists $N \in \mathbb{N}$ such that $|x_n-x_m| < \epsilon/2$ for all $n,m \geq N$.  Choose $K_1 \in \mathbb{N}$, such that $|x_{n_k} - x| < \epsilon/2$ for all $k \geq K$.  Choose $K_2$ such that $n_k \geq N_0$.  Let $K = \max\{K_1,K_2\}$.  Then, for $n \geq N_0$
+    \begin{align}
+        |x_n -x| &= |x_n - x_{n_K} + x_{n_K}-x|
+        \\
+        &\leq |x_n - x_{n_K}| + |x_{n_K}-x|
+        \\
+        &< \epsilon/2 + \epsilon/2 \\
+        &= \epsilon.
+    \end{align}
+\end{proof}
+\textcolor{red}{Note that the $N$ for the sequence being Cauchy is the same as the $N$ for the sequence converging.  This shows a strong equivalence between being Cauchy and being convergent in complete spaces.}
 
 \end{document}
