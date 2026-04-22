@@ -1,0 +1,136 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 10}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Algebraic Limit Theorem for series\\
+    - Cauchy Criterion for series\\
+    - Comparison Test \\
+    - Geometric series \\
+    - Absolute Convergence Test \& Alternating Series Test
+\end{abstract}
+
+\maketitle
+
+% \textcolor{red}{Go over the last problem on Quiz 1}
+
+Remember that we can treat a series as a sequence of partial sums:
+\begin{align*}
+    \sum\limits_{k=1}^\infty a_k &= \lim\limits_{n\to\infty} s_n, \text{ where}
+    \\
+    s_n &= a_1 + a_2 + \cdots + a_n.
+\end{align*}
+
+\begin{exercise}
+    Formulate parts (a) and (b) of the Algebraic Limit Theorem but now for infinite series.  Prove these statements are true.
+\end{exercise}
+
+\begin{exercise}
+    What does the Algebraic Limit Theorem (c) and (d) say about the convergence of infinite series?  Where do the suppositions
+    \begin{enumerate}
+        \item $\sum\limits_{k=1}^\infty a_kb_k= AB$
+        \item $\sum\limits_{k=1}^\infty a_k/\sum\limits_{k=1}^\infty b_k = A/B$ if $B\neq 0$
+    \end{enumerate}
+    go wrong?
+\end{exercise}
+
+\begin{theorem}{(Algebraic Limit Theorem for Series)}
+    If $\sum\limits_{k=1}^\infty a_k = A$, $\sum\limits_{k=1}^\infty b_k =B$, then 
+    \begin{enumerate}
+        \item $\sum\limits_{k=1}^\infty ca_k = cA$ for all $c\in\mathbb{R}$
+        \item $\sum\limits_{k=1}^\infty a_k +b_k = A+B$
+    \end{enumerate}
+\end{theorem}
+
+% \textcolor{red}{Have them formulate the CC for series with you using the theorem that a sequence in $\mathbb{R}$ converges if and only if it is Cauchy.}
+
+\begin{theorem}{(Cauchy Criterion for Series)}
+    The series $\sum\limits_{k=1}^\infty a_k$ converges if and only if for all $\epsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $n\geq m\geq N$, 
+    \begin{align*}
+        |a_{m+1} + a_{m+2} + \cdots + a_n| < \epsilon.
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    $(\implies)$  Suppose the series converges.  Then for all $\epsilon > 0$, there exists an $N\in\mathbb{N}$ such that for all $n\geq m \geq N$ implies
+    \begin{align*}
+        |s_n - s_m| < \epsilon,
+    \end{align*}
+    which is exactly 
+    \begin{align*}
+        |a_{m+1} + a_{m+2} + \cdots + a_n| < \epsilon.
+    \end{align*}
+
+    $(\impliedby)$ Since for all $\epsilon > 0$ there exists  $N \in \mathbb{N}$ such that for all $n\geq m \geq N$, 
+    \begin{align*}
+        |a_{m+1} + a_{m+2} + \cdots + a_n| < \epsilon,
+    \end{align*}
+    but again, 
+    \begin{align*}
+        |a_{m+1} + a_{m+2} + \cdots + a_n| = |s_n - s_m|.
+    \end{align*}
+\end{proof}
+
+This simple theorem leads to some other, very useful theorems.
+
+\begin{theorem}
+    If the series $\sum\limits_{k=1}^\infty a_k$ converges, then $\{a_k\} \to 0$.
+\end{theorem}
+\begin{proof}
+    \textcolor{red}{How can we prove this using the Cauchy Criterion?}
+    Let $\epsilon > 0$.  Fix $N$ such that for all $n,m \geq N$
+    \begin{align*}
+        |a_{m+1} + a_{m+2} + \cdots + a_n| < \epsilon.
+    \end{align*}
+    Choose $m = n-1$ (and therefore $n \geq N+1$).  Then $|a_n| < \epsilon$, or $|a_n - 0| < \epsilon$, and the proof is concluded.
+\end{proof}
+
+\begin{theorem}{(Comparison Test)}
+    Assume $\{a_k\}, \{b_k\}$ are sequences satisfying $0 \leq a_k \leq b_k$ for all $k \in \mathbb{N}$.
+    \begin{enumerate}
+        \item If $\sum\limits_{k=1}^\infty b_k$ converges, then $\sum\limits_{k=1}^\infty a_k$ converges.
+        \item If $\sum\limits_{k=1}^\infty a_k$ diverges, then $\sum\limits_{k=1}^\infty b_k$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\begin{exercise}
+    Prove the above theorem. \textcolor{red}{Prove using CC, and bonus: prove using Monotone Convergence Theorem.}
+\end{exercise}
+
+Geometric series: 
+\begin{align*}
+    \sum\limits_{k=0}^\infty a r^k = a + ar + ar^2 + ar^3 + \cdots
+\end{align*}
+For $r \neq 1$, there is an algebraic identity:
+\begin{align*}
+    (1-r)(1+r+r^2 + r^3 + \cdots + r^{m-1}) = 1-r^m
+\end{align*}
+\textcolor{red}{How can I use this identity to rewrite the partial sum?}
+
+\begin{align}
+    s_m = \frac{a(1-r^m)}{1-r}.
+\end{align}
+\textcolor{red}{When does this sequence of partial sums converge?}  Apply Algebraic Limit theorem for sequences multiply times (noting that $r^m$ converges if and only if $|r|< 1$, which we proved earlier in the course).
+
+On your own, prove the following: 
+\begin{theorem}{(Absolute Convergence Test)}
+If $\sum\limits_{k=1}^\infty |a_k|$ converges, then $\sum\limits_{k=1}^\infty a_k$ converges.
+\end{theorem}
+and 
+\begin{theorem}{(Alternating Series Test)}
+ Let $\{a_k\}$ be a sequence such that 
+ \begin{enumerate}
+     \item $a_k \geq a_{k+1}$ for all $k \in \mathbb{N}$
+     \item $a_k \to 0$.
+ \end{enumerate}
+Then the alternating series $\sum\limits_{k=1}^\infty (-1)^{k+1}a_k$ converges.
+\end{theorem}
+
+\begin{definition}
+    If $\sum\limits_{k=1}^\infty |a_k|$ converges, then we say the original series $\sum\limits_{k=1}^\infty a_k$ converges absolutely.  Otherwise, if $\sum\limits_{k=1}^\infty a_k$ converges but $\sum\limits_{k=1}^\infty |a_k|$ does not, we say the $\sum\limits_{k=1}^\infty a_k$ converges conditionally. 
+\end{definition}
+\textcolor{red}{Given this definition, what can we say about the series $\sum\limits_{k=1}^\infty \frac1k$?}
+
+\end{document}
