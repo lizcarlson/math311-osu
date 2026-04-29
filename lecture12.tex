@@ -6,17 +6,63 @@
     
     \begin{abstract}  
     Outline: \\
-    - 
+    - Limit points \\
+    - Isolated points \\
+    - Closed sets
 \end{abstract}
 
 \maketitle
 
+\textcolor{red}{Before we begin class today, I have some important pieces of advice going forward in terms of group work and homework strategies.
+\begin{itemize}
+    \item In class, when you are at the board, you all now have a bit of an understanding of the pace at which you learn, and you understand for some of you it is faster than others.  For those who are quicker than others in your group, I want you to take on a more advisory role.  Use this as a time to hone your teaching skills.  In doing so, you will actually slow down your own thought process, and make yourself understand the topics better.
+    \item If asking for direction of one another on your homework makes you feel like you missed out on developing some reasoning, try the following: do not ask how someone else approached a problem, but rather, ask them if they completed the problem, and then ask them to look at what you are doing and see if they have any hints based on where you are at in your proof.  This is harder, but it will develop *both* of your skills immensely, and you will be able to see other people's ways of thinking.  Proof writing is as much a creative task as it is a rigorous, logical one.
+\end{itemize}
+}
+
+
 \begin{definition}
     A point $x$ is a limit point (or cluster point, or accumulation point) of a set $A$ if every $\epsilon$-neighborhood $V_\epsilon(x)$ of $x$ intersects the set $A$ in some point other than $x$.  
 \end{definition}
-
+\begin{exercise}
+    Prove the following theorem:
 \begin{theorem}
     A point $x$ is a limit point of a set $A$ if and only if $x = \lim a_n$ for some sequence $\{a_n\}\subset A$ such that $a_n \neq x$ for all $n \in \mathbb{N}$.
 \end{theorem}
-Proof next time.
+\end{exercise}
+\begin{proof}
+    ($\implies$)  Let $\epsilon > 0$.  Then $V_\epsilon(x) \cap A \neq \emptyset$, meaning there exists at least one element $a \in A$ such that $a \in V_\epsilon(x)$.  Choose a sequence of $\epsilon$ such that $\epsilon_n = 1/n$ for all $n \in \mathbb{N}$.  Then choose $a_n \in V_{\epsilon_n}(x)$.  Then, for any $\delta > 0$, there exists a $N\in\mathbb{N}$ such that $1/n\leq 1/N < \delta$ for all $n\geq N$, and therefore $|a_n-x| < 1/n < \delta$.
+
+    ($\impliedby$)  Let $\epsilon > 0$.  Then there exists an $N \in \mathbb{N}$ such that $|a_n-x| < \epsilon$ for all $n \geq N$.  However, this defines a neighborhood, and the conclusion is formed.
+\end{proof}
+    \textcolor{red}{Why do you think we needed to assume that $a_n \neq x$?}
+To avoid the trivial case $\{x, x, x, x, ....\}$.  If I have such a set, consisting of a single point, $A = \{x\}$.  Is the point a limit point?  By definition, no.  So, this means we have not yet classified all possible points, necessitating another definition.
+
+\begin{definition}
+    A point $a \in  A$ is an isolated point of $A$ if it is not a limit point of $A$.
+\end{definition}
+
+
+    \begin{exercise}
+        How many limit points does the set $[1,2]$ contain?  Prove that these points are limit points.
+    \end{exercise} 
+
+
+Now, let's define a new type of set.
+
+\begin{definition}
+    A set $F\subseteq\mathbb{R}$ is closed if it contains all its limit points.
+\end{definition}
+
+\begin{theorem}
+    A set $F\subseteq \mathbb{R}$ is closed if and only if every Cauchy sequence in $F$ has a limit in $F$.
+\end{theorem}
+
+You can use this neighborhood definition to prove another version of the density of $\mathbb{Q}$ in $\mathbb{R}$.  Assuming the original density claim, that between any two real numbers there is a rational.  Then, you can take any neighborhood of any real number, $V_\epsilon(x)$, and use this theorem to claim that there is at least one rational number in $V_\epsilon(x)$.  Applying the theorem we proved at the beginning of class allows us to conclude that there exists a sequence of rationals converging to $x$.
+
+\begin{definition}
+    Let $A\subseteq \mathbb{R}$, and let $L$ be the set of limit points of $A$.  The closure of $A$ is the set $\overline{A}:= A\cup L$.
+\end{definition}
+
+    
 \end{document}
