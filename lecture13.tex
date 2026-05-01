@@ -18,8 +18,6 @@ Recall:
     A set $F\subseteq\mathbb{R}$ is closed if it contains all its limit points.
 \end{definition}
 
-
-
 \begin{definition}
     Let $A\subseteq \mathbb{R}$, and let $L$ be the set of limit points of $A$.  The closure of $A$ is the set $\overline{A}:= A\cup L$.
 \end{definition}
@@ -28,7 +26,7 @@ Recall:
     For any $A\subseteq \mathbb{R}$, the closure of $A$ is a closed set and the smallest closed set containing $A$.
 \end{theorem}
 \begin{proof}
-    Let $L$ be the set of limit points of $A$.  By definition, $L \subseteq \overline{A}$, but we need to show that $\overline{A}$ has not generated any new limit points.  Let $x$ be a limit point of $\overline{A}$.  Then, for all $\epsilon > 0$,  $V_\epsilon(x) \cap \overline{A} \neq \emptyset$.  Note that, using DeMorgan's laws, $V_\epsilon(x) \cap (A\cup L) = (V_\epsilon(x) \cap A) \cup (V_\epsilon(x) \cap L)$ .  If $x \in L$, then we are done.  If $x \notin L$, i.e. if it is an isolated point, then there exists $\epsilon_0$ such that $V_{\epsilon_0}(x) \cap A = \emptyset$; but then this would also imply that $V_{\epsilon_0}(x) \cap \overline{A} = \emptyset$, a contradiction. 
+    Let $L$ be the set of limit points of $A$.  By definition, $L \subseteq \overline{A}$, but we need to show that $\overline{A}$ has not generated any new limit points.  Let $x$ be a limit point of $\overline{A}$.  Then, for all $\epsilon > 0$,  $V_\epsilon(x) \cap \overline{A} \neq \emptyset$.  Note that, using DeMorgan's laws, $V_\epsilon(x) \cap (A\cup L) = (V_\epsilon(x) \cap A) \cup (V_\epsilon(x) \cap L)$ .  If $x \in L$, then we are done.  Suppose $x$ is a limit point of $L$.  Then, by definition, for every $\epsilon > 0$, $V_\epsilon(x) \cap L$ is a nontrivial intersection.  Let $x_\epsilon \in V_\epsilon(x) \cap L$.  By the fact that $x_\epsilon \in L$, we know there exists an element from $A$ such that $|x_\epsilon -a| < |x_\epsilon - x|/2 < \epsilon /2$.  Choose a decreasing sequence of these $\epsilon's$ and corresponding elements of $A$, then you have created a sequence in $A$ that converges to $x$.  Thus, $L$ contains its limit points, so $V_\epsilon(x) \cap L$ is nontrivially nonempty.  Thus, $\overline{A}$ is closed.
 
     Now, we need to show that $\overline{A}$ is the smallest closed set containing $A$.  This is trivial, as any closed set containing $A$ must also contain $L$, i.e. $A\cup L \subset F$ for any closed set $F$ containing $A$.  But $A \cup L = \overline{A}$ by definition, and the theorem is proved.
 \end{proof}
@@ -57,5 +55,27 @@ Recall:
     \begin{exercise}
         Find the complement of the sets you came up with in Exercise 3.  Determine whether or not they are open, closed, or neither.   What do you conjecture about the nature of the complement of open sets? closed sets?
     \end{exercise}
+
+\begin{definition}
+    A set $K \subseteq \mathbb{R}$ is compact if every sequence in $K$ has a subsequence that converges to a limit that is also in $K$. 
+\end{definition}
+
+\textcolor{red}{This is not the standard definition you will see in topology.  The following theorem holds in finite dimensional spaces only.}
+
+\begin{theorem}{(Heine-Borel Theorem)}
+    A set $K \subseteq \mathbb{R}$ is compact if and only if it is closed and bounded.
+\end{theorem}
+\begin{proof}
+    $(\implies)$ Suppose $K$ is compact.  FTSOC, suppose $K$ is unbounded.  Since $K$ is not bounded, there must exist a sequence $\{x_n\}\subset K$ such that $x_n > n$ for every $n \in \mathbb{N}$.  By the fact that $K$ is compact, there is a subsequence of this sequence that must converge, leading to a contradiction as every subsequence of this sequence diverges.
+
+    Therefore, $K$ is bounded.  Let $x$ be a limit point of some sequence in $K$.  Since all subsequences of converging sequences converge to the same limit, by the assumption $K$ is compact, $x \in K$.
+
+    $(\impliedby)$
+    Suppose we are bounded and closed.  Then $K$ contains all its limit points.  Since $K$ is bounded, every sequence in $K$ is bounded.  By Bolzano-Weierstrass theorem, any bounded sequence has a converging subsequence.  Since $K$ is closed, then that subsequence has a limit in $K$.  Therefore, $K$ is compact by definition.
+\end{proof}
+
+\textcolor{red}{Have them provide you with examples of closed sets in $\mathbb{R}$ that are not compact.}
+
+Next time, we will prove a more generalized version of the nested interval property.
     
 \end{document}
