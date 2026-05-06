@@ -26,7 +26,7 @@ Recall:
     For any $A\subseteq \mathbb{R}$, the closure of $A$ is a closed set and the smallest closed set containing $A$.
 \end{theorem}
 \begin{proof}
-    Let $L$ be the set of limit points of $A$.  By definition, $L \subseteq \overline{A}$, but we need to show that $\overline{A}$ has not generated any new limit points.  Let $x$ be a limit point of $\overline{A}$.  Then, for all $\epsilon > 0$,  $V_\epsilon(x) \cap \overline{A} \neq \emptyset$.  Note that, using DeMorgan's laws, $V_\epsilon(x) \cap (A\cup L) = (V_\epsilon(x) \cap A) \cup (V_\epsilon(x) \cap L)$ .  If $x \in L$, then we are done.  Suppose $x$ is a limit point of $L$.  Then, by definition, for every $\epsilon > 0$, $V_\epsilon(x) \cap L$ is a nontrivial intersection.  Let $x_\epsilon \in V_\epsilon(x) \cap L$.  By the fact that $x_\epsilon \in L$, we know there exists an element from $A$ such that $|x_\epsilon -a| < |x_\epsilon - x|/2 < \epsilon /2$.  Choose a decreasing sequence of these $\epsilon's$ and corresponding elements of $A$, then you have created a sequence in $A$ that converges to $x$.  Thus, $L$ contains its limit points, so $V_\epsilon(x) \cap L$ is nontrivially nonempty.  Thus, $\overline{A}$ is closed.
+    Let $L$ be the set of limit points of $A$.  By definition, $L \subseteq \overline{A}$, but we need to show that $\overline{A}$ has not generated any new limit points.  Let $x$ be a limit point of $\overline{A}$.  Then, for all $\epsilon > 0$,  $V_\epsilon(x) \cap \overline{A} \neq \emptyset$.  Note that, using DeMorgan's laws, $V_\epsilon(x) \cap (A\cup L) = (V_\epsilon(x) \cap A) \cup (V_\epsilon(x) \cap L)$ .  If $x \in L$, then we are done.  Suppose $x$ is a limit point of $L$.  Then, by definition, for every $\epsilon > 0$, $V_\epsilon(x) \cap L$ has a nontrivial intersection.  Let $n \in \mathbb{N}$. Let $x_{n} \in V_{1/n}(x) \cap L$, $x_{n} \neq x$.  By the fact that $x_n \in L$, we know there exists an element $a_n\in A$ such that $|x_n -a_n| < |x_n - x|/2 < \frac{1}{2n}$.  Inducting on $n$, this generates a sequence $\{a_n\}$ in $A$ that converges to $x$.  Thus, $x$ is in $L$ as it is a limit point of a sequence in $A$.  Thus, $\overline{A}$ is closed.
 
     Now, we need to show that $\overline{A}$ is the smallest closed set containing $A$.  This is trivial, as any closed set containing $A$ must also contain $L$, i.e. $A\cup L \subset F$ for any closed set $F$ containing $A$.  But $A \cup L = \overline{A}$ by definition, and the theorem is proved.
 \end{proof}
@@ -74,7 +74,7 @@ Recall:
     Suppose we are bounded and closed.  Then $K$ contains all its limit points.  Since $K$ is bounded, every sequence in $K$ is bounded.  By Bolzano-Weierstrass theorem, any bounded sequence has a converging subsequence.  Since $K$ is closed, then that subsequence has a limit in $K$.  Therefore, $K$ is compact by definition.
 \end{proof}
 
-\textcolor{red}{Have them provide you with examples of closed sets in $\mathbb{R}$ that are not compact.}
+%\textcolor{red}{Have them provide you with examples of closed sets in $\mathbb{R}$ that are not compact.}
 
 Next time, we will prove a more generalized version of the nested interval property.
     

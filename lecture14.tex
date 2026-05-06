@@ -1,0 +1,76 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 14}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Heine-Borel Theorem \\
+    - Compact sets: open cover edition
+\end{abstract}
+
+\maketitle
+
+\begin{theorem}{(Heine-Borel Theorem)}
+    A set $K \subseteq \mathbb{R}$ is compact if and only if it is closed and bounded.
+\end{theorem}
+\begin{proof}
+    $(\implies)$ Suppose $K$ is compact.  FTSOC, suppose $K$ is unbounded.  Since $K$ is not bounded, there must exist a sequence $\{x_n\}\subset K$ such that $x_n > n$ for every $n \in \mathbb{N}$.  By the fact that $K$ is compact, there is a subsequence of this sequence that must converge, leading to a contradiction as every subsequence of this sequence diverges.
+
+    Therefore, $K$ is bounded.  Let $x$ be a limit point of some sequence in $K$.  Since all subsequences of converging sequences converge to the same limit, by the assumption $K$ is compact, $x \in K$.
+
+    $(\impliedby)$
+    Suppose we are bounded and closed.  Then $K$ contains all its limit points.  Since $K$ is bounded, every sequence in $K$ is bounded.  By Bolzano-Weierstrass theorem, any bounded sequence has a converging subsequence.  Since $K$ is closed, then that subsequence has a limit in $K$.  Therefore, $K$ is compact by definition.
+\end{proof}
+
+\textcolor{red}{What is an example of a closed set in $\mathbb{R}$ that is not compact?}
+
+\begin{theorem}
+    If $K_1 \supseteq K_2 \supseteq K_3 \supseteq \cdots$ is a nested sequence of nonempty compact sets, then $\bigcap\limits_{n=1}^\infty K_n \neq \emptyset$.
+\end{theorem}
+\begin{proof}
+    For each $n \in \mathbb{N}$, choose a point $x_n \in K_n$.  By the fact that the intervals are nested $\{x_n\} \subset K_1$.  Therefore, there exists a subsequence $\{x_{n_k}\}$ that converges to some limit $x$.  We also note that $x \in \bigcap\limits_{n=1}^\infty$ since every subsequence of this converging subsequence must go to $x$, and therefore any truncation of the sequence in any $K_{n_0}$ must contain the limit $x$.
+\end{proof}
+
+Now let's move to the more general definition of a compact set.
+
+    \begin{definition}
+        Let $A\subseteq \mathbb{R}$.  An open cover for $A$ is a collection of open sets $\{O_\lambda: \lambda \in \Lambda\}$ (where the cardinality of $\Lambda$ is left unspecified) whose union contains the set $A$, i.e. $A \subseteq \bigcup\limits_{\lambda \in \Lambda} O_\lambda$.
+    \end{definition}
+
+\begin{exercise}
+    Come up with some open covers (one finite collection, one infinite collection) for the sets 
+    \begin{enumerate}
+        \item $(-1,1)$
+        \item $[1,2]$
+        \item $(1, \infty)$
+    \end{enumerate}
+\end{exercise}
+\begin{exercise}
+    Is there a general way to construct an open cover for any set in $\mathbb{R}$?
+\end{exercise}
+
+\begin{theorem}
+    Let $K \subseteq \mathbb{R}$.  The following are equivalent:
+    \begin{enumerate}
+        \item $K$ is compact.
+        \item $K$ is closed and bounded.
+        \item Any open cover for $K$ has a finite subcover.
+    \end{enumerate}
+\end{theorem}
+\textcolor{red}{We prove only one direction today, that (c) $\implies$ (b).}
+\begin{proof}
+    Let us prove that (c) implies (b).  Suppose any open cover for $K$ has a finite subcover.  Let's take a general open cover by defining $O_x$ to be an open interval of radius $1$ around each point $x\in K$.  By assumption, there exists a finite subcover $\{O_{x_1}, O_{x_2}, ..., O_{x_m}\}$.  Because $K \subseteq \bigcup\limits_{k=1}^m O_{x_k}$, and each $|O_{x_k}| < 2$, then $K$ is bounded as it is contained in the union of bounded sets.
+
+    Now, assume $K$ is not closed.  Then there exists $\{y_n\}$ a Cauchy sequence contained in $K$ with limit $y$ and $y \notin K$.  If $y \notin K$, then every $x \in K$ is some positive distance away from $y$.  Let us construct an open cover by taking $O_x$ o be an interval of radius $|x-y|/2$ around each point $x \in K$.  Thus, there exists a finite subcover $\{O_{x_1}, O_{x_2}, ..., O_{x_m}\}$ of this open cover containing $K$.  But, this means that the open cover will not be able to contain all the elements in $\{y_n\}$.  Indeed, let 
+    \begin{align}
+        \epsilon_0 = \min \left\{ \frac{|x_i-y|}2: 1 \leq i \leq n \right\}.
+    \end{align}
+    By the fact that $y_n \to y$, we can find an $N$ such that $|y_N-y| < \epsilon_0$.  But, $y_n \notin O_{x_i}$ for any $i = 1, ..., m$, by construction.  This yields a contradiction.
+\end{proof}
+
+\textcolor{red}{The above proof holds in infinite dimensional spaces as well, but the converse will \textbf{NOT} hold.}
+
+    
+\end{document}

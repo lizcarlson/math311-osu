@@ -1,0 +1,77 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 14}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Determine if example sets are compact
+    \\
+    - perfect sets, $G_\delta$ sets \\
+    - definition of continuity
+\end{abstract}
+
+\maketitle
+
+
+Decide if the following sets are compact
+\begin{enumerate}
+    \item $\mathbb{Q}$
+    \item  $\mathbb{Q}\cap [1,2]$
+    \item  $\mathbb{R}$
+    \item $\mathbb{Z}\cap [-1,1]$
+    \item $\{1/n\}$.
+\end{enumerate}
+
+Here are a few other type of sets.
+
+\begin{definition}
+A set $P$ is perfect if it is closed and contains no isolated points.    
+\end{definition}
+
+\begin{exercise}
+    Find a closed set in $\mathbb{R}$ that is not perfect.
+\end{exercise}
+
+\begin{theorem}
+    The Cantor set is perfect.
+\end{theorem}
+\textit{informal proof:}
+You can use fact that if $x$ is in the Cantor set, you can find an $N$ such that $x$ is in an interval $I_N$ of length $3^{-N}$ such that $3^-N < \epsilon$ ($\epsilon > 0$ arbitrary.  So, an $\epsilon$ neighborhood of $x$ contains this interval.  But now, that entire interval is not contained in the Cantor set (since it is an intersection of this interval with many other subintervals).  So, consider the two subintervals of $I_N$, which we label $I_{N+1}^0, I_{N+1}^1$.  Then, we have that both of these intervals contain an element $y$ that is also in the Cantor set, but also in $I_N$, which is contained in the $\epsilon-$ neighborhood of $x$.  Therefore, any arbitrary $\epsilon$-neighborhood of $x$ must contain at least one element from the Cantor set that is not $x$. 
+
+Perfect sets are useful in connecting the concepts of continuity and cardinality (we will talk about the formal definition of continuity on Friday, or maybe at the end of class today.)
+
+Connected sets are also important, but we will not focus on these too much.  Whether or not a set is connected turns out to be absolutely critical to understanding whether or not I can apply a variety of theorems, such as the intermediate value theorem.  If I am working with functions on disconnected sets, rules break, even though they will hold on the connected subsets.  %\textcolor{red}{Draw some pictures of connected sets.}
+
+Even more important are $G_\delta$ sets.
+
+\begin{definition}
+    A set $A \subseteq \mathbb{R}$ is called an $F_\sigma$ set if it can be written as a countable union of closed sets.  A set $B \subseteq \mathbb{R}$ is called a $G_\delta$ set if it can be written as the countable intersection of open sets.
+\end{definition}
+
+Recall that a set $G \subseteq \mathbb{R}$ is dense in $\mathbb{R}$ if given any two real numbers $a < b$, it is possible to find a point $x \in G$ with $a < x< b$.
+
+These sets turn out to be super important in developing the part of analysis called measure theory;  is the theoretical foundation for all of probability theory.
+
+\begin{theorem}
+    If $\{G_1, G_2, G_3,...\}$ is a countable collection of dense, open sets, then $\bigcap\limits_{n=1}^\infty G_n \neq \emptyset$.
+\end{theorem}
+The proof of this is actually relatively straightforward: you can use density to show that any set intersecting $G_1$ is nonempty, find a non-empty neighborhood contained in this set, inside of which you can take a slightly smaller closed neighborhood.  By induction, because all the $G_k$ are dense, the argument applies but now choosing the set to be the previous closed non-empty neighborhood.  Use NIP to conclude.
+
+
+These weird, general notions of sets actually help form the foundations of probability theory. % \textcolor{red}{ (expound on probability, it's connection to algebra, and how it started out unrigorous and was made rigorous by Kolmogorov in the 1930s) (Kolmogorov's work is still the state of the art of our understanding of turbulence)}
+
+This theorem is instrumental in the proof of Baire's Theorem.
+
+\begin{theorem}{(Baire's Theorem}
+    The set of real numbers cannot be written as the countable union of nowhere-dense sets (where a nowhere-dense set is a set $E$ such that $\overline{E}$ contains no nonempty open intervals).
+\end{theorem}
+
+Now, let's start Chapter 4.
+
+\begin{exercise}
+    Using graphs and intuition, develop a definition of continuity.
+\end{exercise}
+
+\end{document}
