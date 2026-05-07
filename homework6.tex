@@ -1,0 +1,37 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Homework 6}
+    \begin{abstract} Solve the following problems.  Due May 13th in class. \end{abstract}
+    \maketitle
+
+\textit{We have used the following theorem and seen it in examples in class.}
+\begin{exercise}
+    Prove that the complement of an open set is a closed set.
+\end{exercise}
+
+Note the following definition:
+\begin{definition}
+    Let $A \subseteq \mathbb{R}$.  Given $x \in A$, if there exists an $\epsilon>0$ such that $V_\epsilon(x) \subseteq A$, then $x$ is an \textit{interior point}.
+\end{definition}
+\begin{exercise}
+    Let $A^\circ$ be the set of all interior points of $A$.  Prove that if $G \subseteq A$ is open, then $G \subseteq A^\circ$. 
+\end{exercise}
+
+\begin{exercise}
+    A Lipschitz function is a function such that, for any $x, y \in \mathbb{R}$, then $|f(x) - f(y)| \leq L |x-y|$ for some $L > 0$.  Prove that all Lipschitz functions are continuous.
+\end{exercise}
+
+\underline{\textbf{\textit{Bonus}}}
+\begin{exercise}
+    Assume $K$ is compact (or closed and bounded), and let $\{O_\lambda:\lambda \in \Lambda\}$ be an open cover for $K$.  For the sake of contradiction, assume no finite subcover exists.  Let $I_0$ be a closed interval containing $K$ and bisect $I_0$ into to closed intervals $A_1$ and $B_1$.
+    \begin{enumerate}
+        \item Why must either $A_1 \cap K$ or $B_1 \cap K$ (or both) have no finite subcover consisting of sets from $\{O_\lambda : \lambda \in \Lambda\}$?
+        \item Show that there exists a nested sequence of closed intervals $I_0 \supseteq I_1 \supseteq I_2 \supseteq \cdots$ with the property that, for each $n$, $I_n \cap K$ cannot be finitely covered and $\lim\limits_{n\to \infty} |I_n| = 0$.
+        \item Show that there exists $x \in K$ such that $x \in I_n$ for all $n \in \mathbb{N}$.
+        \item Because $x \in K$, there must exist an open set $O_{\lambda_0}$ from the original collection that contains $x$ as an element.  Argue that there must exist an $n_0$ sufficiently large to guarantee that $I_{n_0} \subseteq O_{\lambda_0}$.  Explain why this yields a contradiction.
+    \end{enumerate}
+\end{exercise}
+
+\end{document}
