@@ -1,0 +1,33 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Quiz 3}
+    \begin{abstract} Solve the following problems. \end{abstract}
+    \maketitle
+\begin{exercise}
+    Give an example of the following, or prove it is impossible:
+    \begin{itemize}
+        \item A Cauchy sequence with a divergent subsequence.
+    \end{itemize}
+\end{exercise} 
+\newpage
+Recall that the formula for the geometric series is $\sum\limits_{k=0}^\infty ar^k= \frac{a}{1-r}$ for any $|r| < 1$.  Recall the Cauchy Condensation Test:
+\begin{theorem}
+    Suppose $\{b_n\}$ is decreasing and satisfies $b_n \geq 0$ for all $n \in \mathbb{N}$.  Then, the series $\sum\limits_{n=1}^\infty b_n$ converges if and only if the series 
+    \begin{align*}
+        \sum\limits_{n=1}^\infty 2^n b_{2^n} = b_1 + 2b_2 + 4b_4 + 8b_8 + 16b_{16}\cdots
+    \end{align*}
+    converges.
+\end{theorem}
+\begin{exercise}
+    Use the Cauchy Condensation Test to prove the series $\sum\limits_{n=1}^\infty \frac{1}{n^p}$ converges if and only if $p >1$.
+\end{exercise}
+\newpage
+BONUS
+
+\begin{exercise}
+  A set is called clompact if it has the property that every \textit{closed} cover (i.e. a cover consisting of closed sets admits a finite subcover).  Describe all of the clompact subsets of $\mathbb{R}$. 
+\end{exercise}
+
+\end{document}

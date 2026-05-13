@@ -1,0 +1,62 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 16}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Functional limits \\
+    - Different definitions of continuity
+\end{abstract}
+
+\maketitle
+
+\begin{definition}
+    Let $f:A \subseteq \mathbb{R} \to \mathbb{R}$.   Then $f$ is continuous at $x_0 \in A$ if, for all $\epsilon > 0$, there exists a $\delta >0$ such that $|f(x) - f(x_0)| < \epsilon$ whenever $|x-x_0|< \delta$.
+\end{definition}
+
+\begin{exercise}
+    Describe the continuity properties of the function
+    \begin{align}
+        g(x) = \begin{cases}
+            1 & x \in \mathbb{Q}\\
+            0 & x \in \mathbb{R}.
+        \end{cases}
+    \end{align}
+\end{exercise}
+
+We can also develop general notions of functional limits.
+
+\begin{definition}
+    Let $f : A \to \mathbb{R}$ and let $c$ be a limit point of the domain $A$.  We say $\lim\limits_{x\to c} f(x) = L$ if, for all $\epsilon > 0$, there exists $\delta > 0$ such that $|f(x) - L| < \epsilon$ whenever $0 < |x-c|< \delta$.
+\end{definition}
+
+\begin{exercise}
+    Formulate a topological version of the previous definition.  
+\end{exercise}
+\vspace{-0.3in}
+\textcolor{red}{
+\begin{definition}
+    Let $c$ be a limit point of the function $f:A \to \mathbb{R}$.  We say $\lim\limits_{x\to c} f(x) = L$ if for every $\epsilon$-neighborhood $V_\epsilon(L)$, there exists a $\delta$-neighborhood $V_\delta(c)$ around $c$ with the property that for all $x \in V_\delta(c)$ different from $c$ (with $x \in A$, it follows that $f(x) \in V_\epsilon(L)$.
+\end{definition}
+}
+
+\begin{exercise}
+    Why is this definition more general than the continuity definition?
+\end{exercise}
+
+\begin{exercise}
+    Prove (a) $\implies$ (b):
+    \begin{theorem}
+        Given $f:A \to \mathbb{R}$ and a limit point $c$ of $A$, then TFAE:
+        \begin{enumerate}
+            \item $\lim\limits_{x\to c} f(x) = L$.
+            \item For all sequences $\{x_n\} \subseteq A$ satisfying $x_n \neq c$ and $x_n \to c$, it follows that $f(x_n) \to L$.
+        \end{enumerate}
+    \end{theorem}
+    Conjecture why (b) $\implies$ (a) is harder.
+\end{exercise}
+
+
+\end{document}

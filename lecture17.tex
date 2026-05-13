@@ -1,0 +1,82 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 17}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Finish different definitions of continuity/limits of functions \\
+    - Properties of continuity/limits of functions
+\end{abstract}
+
+\maketitle
+
+    \begin{theorem}
+        Given $f:A \to \mathbb{R}$ and a limit point $c$ of $A$, then TFAE:
+        \begin{enumerate}
+            \item $\lim\limits_{x\to c} f(x) = L$.
+            \item For all sequences $\{x_n\} \subseteq A$ satisfying $x_n \neq c$ and $x_n \to c$, it follows that $f(x_n) \to L$.
+        \end{enumerate}
+    \end{theorem}
+    \begin{proof}
+        (b) $\implies$ (a)
+        Let us prove this by contradiction; suppose that for any sequence $x_n \to c$, $f(x_n) \to L$, but there exists at least one $\epsilon_0>0$ such that for all $\delta > 0$, $|f(x) - L| \geq \epsilon_0$ whenever $|x-c| < \delta$.  Choose $\delta_n = \frac1n$.  Then there exists an $x_n \in V_{\delta_n}(c)$ such that $f(x_n) \notin V_{\epsilon_0}(L)$.  But, this immediately contradicts that $f(x_n) \to L$ for any arbitrary sequence.
+    \end{proof}
+
+
+\textcolor{red}{Formulate a divergence criterion for functional limits with them.}
+
+\begin{corollary}
+    Let $f:A \to \mathbb{R}$ and let $c$ be a limit point of $A$.  If there exist two sequences $\{x_n\}, \{y_n\}$ in $A$ with $x_n \neq c, y_n \neq c$ and 
+    \begin{align*}
+        \lim x_n = \lim y_n = c \; \text{ but } \; \lim f(x_n) \neq \lim f(y_n)
+    \end{align*}
+    then we can conclude that the functional limit $\lim\limits_{x\to c} f(x)$ does not exist.
+\end{corollary}
+
+\begin{exercise}
+    \begin{enumerate}
+        \item Determine if $\lim\limits_{x\to 0}\sin(1/x)$ exists.
+        \item Determine if 
+        \begin{align*}
+            g(x) =
+            \begin{cases}
+                x\sin(1/x) & \text{ if } x \neq 0
+                \\
+                0 & \text{ if } x = 0
+            \end{cases}
+        \end{align*}
+        is continuous at $x = 0$.
+    \end{enumerate}
+\end{exercise}
+
+So, now we have four different notions of functional limits/continuity:
+
+\begin{theorem}
+    Let $f:A \to \mathbb{R}$ and let $c$ be a limit point of $A$. The function $f$ is continuous at $c$ iff any of these conditions are met:
+    \begin{enumerate}
+        \item for all $\epsilon > 0$, there exists a $\delta >0$ such that $|f(x) - f(c)| < \epsilon$ whenever $|x-c|< \delta$ (and $x \in A$)
+        \item $\lim\limits_{x\to c} f(x) = f(c)$
+        \item for all $V_\epsilon(f(c))$, there exists a $V_\delta(c)$ such that $x \in V_\delta(c)\cap A$ implies $f(x) \in V_\epsilon(f(c))$
+        \item If $x_n \to c$, $\{x_n\}\subseteq A$, then $f(x_n) \to f(c)$.
+    \end{enumerate}
+\end{theorem}
+
+All of these theorems for functional limits at any limit point $c$ of $A$ apply when $f(c)$ exists. 
+
+
+In recitation, you noticed that these notions of continuity are \textit{localized}, i.e. these definitions all hold for a \textit{point}.  Notably, $\epsilon = \epsilon(\delta)$, but $\delta = \delta(c)$.
+
+\begin{theorem}{Algebraic Limit Theorem for Functional Limits}
+    Let $f:A \to \mathbb{R}$ and $g:A \to \mathbb{R}$, $A \subseteq \mathbb{R}$, and assume $\lim\limits_{x\to c} f(x) = L$ and $\lim\limits_{x\to c} g(x) = M$. for some limit point $c$ of $A$.  Then
+    \begin{enumerate}
+        \item $\lim\limits_{x\to c} kf(x) = kL$ for all $k \in \mathbb{R}$
+        \item $\lim\limits_{x\to c} f(x) +g(x) = L+M$
+        \item $\lim\limits_{x\to c} f(x)g(x) = LM$
+        \item $\lim\limits_{x\to c} f(x)/g(x) = L/M$ if $M \neq 0$
+    \end{enumerate}
+\end{theorem}
+
+
+\end{document}
