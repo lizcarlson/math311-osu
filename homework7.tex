@@ -1,0 +1,46 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Homework 7}
+    \begin{abstract} Solve the following problems.  Due May 20th in class. \end{abstract}
+    \maketitle
+
+\begin{exercise}
+   Find the limits
+   \begin{enumerate}
+       \item $\lim\limits_{x\to c} \frac{x^2-c^2}{x-c}$
+       \item $\lim\limits_{x\to c} \frac{\sqrt{x}-\sqrt{c}}{x-c}$, $c>0$
+   \end{enumerate}
+\end{exercise}
+
+
+Left-hand and right-hand limits can be defined in the following way:
+\begin{definition}
+  Let $A \subseteq \mathbb{R}$.  Suppose $c$ is a limit point of $A$.  If there exist elements $x \in A$ such that $x < c$, then for any sequence $x_n \to c$, $x_n < c$ for all $n \in \mathbb{N}$, we say $f$ has a left-hand limit if $f(x_n) \to L$.  We write this as $\lim\limits_{x\to c^-} f(x) = L$.  An analogous definition holds for a right hand limit, written as $\lim\limits_{x\to c^+} f(x) = L$.
+\end{definition}
+\begin{exercise}
+    Prove that $\lim\limits_{x\to 0^+} \frac{1}x = \infty$.
+\end{exercise}
+
+\begin{exercise}
+    Prove that every polynomial function $p(x) = a_0 + a_1x + \cdots + a_nx^n$ is continuous on $\mathbb{R}$.  Which polynomials are uniformly continuous on $\mathbb{R}$?  Which polynomials are uniformly continuous on the interval $[-1,1]$?
+\end{exercise}
+
+\begin{exercise}
+    Let $f,g:\mathbb{R} \to \mathbb{R}$ be real-valued functions.
+    \begin{enumerate}
+        \item Show that $\min(f,g) = \frac12 (f+g) - \frac12 |f-g|$
+        \item Use (a) to show that if $f$ and $g$ are continuous at $x_0 \in \mathbb{R}$, then $\min(f,g)$ is continouus at $x_0$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    For each rational number $x$, write $x$ as $\frac{p}q$, where $p,q \in \mathbb{Z}$ have no common factors, $q> 0$, and define $f(x) = \frac{1}q$. Show that $f$ is continuous at each point of $\mathbb{R}\setminus\mathbb{Q}$ and is discontinuous at each point of $\mathbb{Q}$.
+\end{exercise}
+
+\begin{exercise}
+    Is it possible to construct a  continuous function $f$ whose domain is $[-1,1]$ and whose range is $(-1,5)$, i.e. $f:[-1,1] \to (-1,5)$?
+\end{exercise}
+
+\end{document}
