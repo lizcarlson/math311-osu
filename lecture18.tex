@@ -2,17 +2,34 @@
 
 \begin{document}
 
-    \title{Lecture 17}
+    \title{Lecture 18}
     
     \begin{abstract}  
     Outline: \\
-    - Finish different definitions of continuity/limits of functions \\
-    - Properties of continuity/limits of functions
+    - Uniform continuity \\
+    - Properties of continuity/limits of functions \\
+    - Continuity \& compactness \\
+    - Extreme Value Theorem
 \end{abstract}
 
 \maketitle
 
 In recitation, you noticed that these notions of continuity are \textit{localized}, i.e. these definitions all hold for a \textit{point}.  Notably, $\epsilon = \epsilon(\delta)$, but $\delta = \delta(c)$.
+
+\begin{exercise}
+    Formulate a definition for a uniformly continuous function.
+\end{exercise}
+\vspace{-0.2in}
+\textcolor{red}{\begin{definition}
+    A function $f:A \to \mathbb{R}$ is uniformly continuous on $A$ if for all $\epsilon > 0$ there exists $\delta > 0$ such that $|x-y| < \delta$ implies $|f(x) - f(y)| < \epsilon$.
+\end{definition}}
+
+\begin{theorem}
+    A function $f:A \to \mathbb{R}$ fails to be uniformly continuous on $A$ if and only if there exists a particular $\epsilon_0 > 0$ and two sequences $\{x_n\}, \{y_n\} \subset A$ such that 
+    \begin{align}
+        |x_n -y_n| \to 0 \quad \text{ but } \quad |f(x_n) - f(y_n)| \geq \epsilon _0.
+    \end{align}
+\end{theorem}
 
 \begin{theorem}{Algebraic Limit Theorem for Functional Limits}
     Let $f:A \to \mathbb{R}$ and $g:A \to \mathbb{R}$, $A \subseteq \mathbb{R}$, and assume $\lim\limits_{x\to c} f(x) = L$ and $\lim\limits_{x\to c} g(x) = M$. for some limit point $c$ of $A$.  Then
@@ -23,5 +40,26 @@ In recitation, you noticed that these notions of continuity are \textit{localize
         \item $\lim\limits_{x\to c} f(x)/g(x) = L/M$ if $M \neq 0$
     \end{enumerate}
 \end{theorem}
+
+\begin{definition}
+    Given a function $f : A\subseteq \mathbb{R} \to \mathbb{R}$, and a subset $B \subseteq A$, let $f(B)$ represent the range of $f$ over the set $B$; i.e. $f(B):=\{f(x):x\in B\}$.  We say $f$ is bounded if $f(A)$ is bounded.  For a given subset $B\subseteq A$, we say $f$ is bounded on $B$ if $f(B)$ is bounded.  
+\end{definition}
+
+\begin{theorem}
+    Let $f:A \to \mathbb{R}$ be continuous on $A$.  If $K\subseteq A$ is compact, then $f(K)$ is compact as well.  
+\end{theorem}
+\begin{proof}
+    Let $\{y_n\}$ be an arbitrary sequence contained in the range set $f(K)$.  We need to find a subsequence converging in $f(K)$.  Thus, there exists $x_n \in K$ such that $f(x_n) = y_n$.  Thus, $x_n \subseteq K$.  So, $x_n$ has a subsequence $\{x_{n_k}\}$ that converges to some $x \in K$.  Then, $x_{n_k} \to x$, and by the definition of a continuous function $f(x_{n_k}) \to f(x)$.  But $f(x) \in f(K)$, and thus we are done.
+\end{proof}
+
+\begin{theorem}{(Extreme Value Theorem)}
+    If $f : K \to \mathbb{R}$ is continuous on a compact set $K\subseteq \mathbb{R}$, then $f$ attains a maximum and a minimum value.  In other words, there exists $x_0, x_1 \in K$ such that $f(x_0) \leq f(x) \leq f(x_1)$ for all $x \in K$.
+ \end{theorem}
+
+ \begin{exercise}
+    Prove the Extreme Value Theorem.
+ \end{exercise}
+
+\textcolor{red}{Can we say anything about the continuity of a function on a compact set?}
 
 \end{document}

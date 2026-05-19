@@ -1,0 +1,37 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{In-Class Assignment 8}
+    \begin{abstract} Solve the following problems. \end{abstract}
+    \maketitle
+
+In class, we proved that if $f$ is continuous and $E$ is a connected set in $f$'s domain, then $f(E)$ is connected.  A trivial consequence of this theorem is the Intermediate Value Theorem:
+\begin{theorem}{(Intermediate Value Theorem (IVT))}
+    If $f:[a,b] \to \mathbb{R}$ is continuous, and if $L$ us a real number satisfying $f(a) < L < f(b)$ or $f(a) > L > f(b)$, then there exists a point $c \in (a,b)$ such that $f(c) = L$.
+\end{theorem}
+
+\begin{exercise}
+    The converse of the IVT is not true.  Find a counterexample.
+\end{exercise}
+
+\newpage
+
+\begin{definition}
+    Let $g:A \to \mathbb{R}$ be a function defined on an interval $A$.  Given $c \in A$, the derivative of $g$ at $c$ is defined as
+    \begin{align*}
+        g'(c) := \lim\limits_{x\to c} \frac{g(x) - g(c)}{x-c},
+    \end{align*}
+    provided the limit exists.  If $g'$ exists for all points $c \in A$, we say that $g$ is differentiable on $A$.
+\end{definition}
+
+\begin{exercise}
+Prove the following theorem:
+\begin{theorem}
+    If $g:A \to \mathbb{R}$ is differentiable at a point $c \in A$, then $g$ is continuous at $a$.
+\end{theorem}
+\textit{Hint:}  A clever multiplication by $1$ and the Algebraic Limit Theorem may come in handy.
+\end{exercise}
+
+
+\end{document}

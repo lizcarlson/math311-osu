@@ -1,0 +1,94 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 19}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Preimage \\
+    - Properties of functions \\
+    - Alternative proof of compactness of image \\
+    - Intermediate Value Theorem
+\end{abstract}
+
+\maketitle
+
+
+
+\begin{definition}
+    Let $f :A \subseteq \mathbb{R} \to \mathbb{R}$ be a function.  Let $V \subset \mathbb{R}$.  The preimage of $V$, or the portion of the domain such that when $f$ is applied yields output in $V$, is denoted $f^{-1}(V)$. 
+\end{definition}
+
+\textcolor{red}{This does NOT mean an inverse exists!}
+\textcolor{red}{If $f(A)^C \cap V \neq \emptyset$, the part of $V$ that is not in the image of $f$, $f^{-1}(f(A)^C \cap V) = \emptyset$.}
+
+\begin{exercise}
+    Let $f$ be any function $f:D\subseteq \mathbb{R} \to \mathbb{R}$.  Let $A, B \subseteq D$, and let $U,V \subseteq \mathbb{R}$.
+    \begin{enumerate}
+        \item Is $f(A\cup B) = f(A) \cup f(B)$?
+        \item Is $f^{-1}(U\cup V) = f^{-1}(U) \cup f^{-1}(V)$?
+        \item Is $f^{-1}(U\cap V) = f^{-1}(U) \cap f^{-1}(V)$?
+        \item Is $f(A\cap B) = f(A) \cap f(B)$?
+    \end{enumerate}
+\end{exercise}
+
+\begin{theorem}
+    Let $f: A\subseteq  \mathbb{R} \to \mathbb{R}$ be a continuous function.  Then, given an open set $V \subseteq \mathbb{R}$, $f^{-1}(V)$ is an open set.
+\end{theorem}
+\begin{proof}
+    Since $V$ is an open set, every point $f(x) \in V$ from the image has an open neighborhood $N_\epsilon(f(x))\subset V$ for some $\epsilon > 0$.  Since $f$ is continuous at $x \in A$, this implies that $f(N_\delta(x)) \subseteq N_\epsilon(f(x)) \subseteq V$ for some $\delta > 0$.  Consequently, $N_\delta(x) \subseteq f^{-1}(V)$.
+\end{proof}
+
+Using open covers, we present an alternative proof of the following theorem.
+
+\begin{theorem}
+    Let $f:A \to \mathbb{R}$ be continuous on $A$.  If $K\subseteq A$ is compact, then $f(K)$ is compact as well.  
+\end{theorem}
+\begin{proof}
+    Let $\{O_\lambda:\lambda \in \Lambda\}$ be an open cover of $f(K)$.  Moreover, by the previous theorem, $\bigcup\limits_{\lambda \in \Lambda} f^{-1}(O_\lambda)$ is an open cover of $K$.  Thus, there exists $\lambda_1, ..., \lambda_k$ such that $\bigcup\limits_{i=1}^k f^{-1}(O_{\lambda_i}) \supseteq K$.  Rewriting, $K \subseteq f^{-1}(O_{\lambda_1})\;  \cup \; f^{-1}(O_{\lambda_2})  \; \cup \; \cdots \; \cup \; f^{-1}(O_{\lambda_k}) = f^{-1}\left(\bigcup\limits_{i=1}^k O_{\lambda_i}\right)$.  Consequently, applying $f$ to both sides yields $\bigcup\limits_{i=1}^k O_{\lambda_i} \supseteq f(K)$.
+\end{proof}
+
+Continuous functions not only preserve compact sets, but also connected sets.
+
+\begin{theorem}
+    Let $f: A\subseteq \mathbb{R}\to \mathbb{R}$ be continuous.  If $E\subseteq A$ is connected, then $f(E)$ is connected.
+\end{theorem}
+\begin{proof}
+    For the sake of contradiction, suppose $f(E) = A\cup B$ where $A\cap B = \emptyset$ and $A\neq\emptyset\neq B$. Therefore, $\emptyset = f^{-1}(\emptyset) = f^{-1}(A\cap B) = f^{-1}(A) \cap f^{-1}(B)$, but since $E$ is connected, $f^{-1}(A) \cap f^{-1}(B) \neq \emptyset$.  This yields a contradiction.
+\end{proof}
+
+% This theorem is a more general version of the Intermediate Value Theorem:
+
+% \begin{theorem}{(Intermediate Value Theorem)}
+%     If $f:[a,b] \to \mathbb{R}$ is continuous, and if $L$ us a real number satisfying $f(a) < L < f(b)$ or $f(a) > L > f(b)$, then there exists a point $c \in (a,b)$ such that $f(c) = L$.
+% \end{theorem}
+
+% It is possible for a function not to be continuous, yet satisfy the intermediate value property, i.e. that if $L$ us a real number satisfying $f(a) < L < f(b)$ or $f(a) > L > f(b)$, then there exists a point $c \in (a,b)$ such that $f(c) = L$.  Notably, our function $f(x) = \begin{cases} \sin(1/x) &x\neq 0\\ 0 & x= 0\end{cases}$ is one of these functions.
+
+% Now, we move on to chapter 5, and finally define a derivative.
+
+% \begin{definition}
+%     Let $g:A \to \mathbb{R}$ be a function defined on an interval $A$.  Given $c \in A$, the derivative of $g$ at $c$ is defined as
+%     \begin{align*}
+%         g'(c) := \lim\limits_{x\to c} \frac{g(x) - g(c)}{x-c},
+%     \end{align*}
+%     provided the limit exists.  If $g'$ exists for all points $c \in A$, we say that $g$ is differentiable on $A$.
+% \end{definition}
+
+% \begin{theorem}
+%     If $g:A \to \mathbb{R}$ is differentiable at a point $c \in A$, then $g$ is continuous at $a$.
+% \end{theorem}
+% \begin{proof}
+%     Apply Algebraic Limit Theorem:
+%     \begin{align*}
+%         \lim\limits_{x\to c} g(x) - g(c) &= \lim\limits_{x\to c} \left(\frac{g(x) - g(c)}{x-c}(x-c)\right)
+%         \\
+%         &= \lim\limits_{x\to c} \frac{g(x) - g(c)}{x-c} \cdot \lim\limits_{x\to c}(x-c)
+%         \\
+%         &= g'(c) \cdot 0 \\
+%         &= 0.
+%     \end{align*}
+% \end{proof}
+
+\end{document}
