@@ -7,7 +7,8 @@
     \begin{abstract}  
     Outline: \\
     - Interior Extremum Theorem \\
-    - blah
+    - Darboux's Theorem \\
+    - Rolle's Theorem
 \end{abstract}
 
 \maketitle
@@ -17,8 +18,46 @@
     Let $f$ be differentiable on $(a,b)$.  If $f$ attains a max/min at some point $c \in (a,b)$, then $f'(c) = 0$.
 \end{theorem}
 \begin{proof}
-    Construct two sequences and show that the derivative is $\geq 0$, $\leq 0$.
+    Since $c \in (a,b)$, we can construct $x_n \to c$ with $x_n < c$, and $y_n \to c$ with $y_n > c$ for all $n \in \mathbb{N}$.  Notably,
+    \begin{align*}
+        f'(c) = \lim\limits_{n\to \infty} \frac{f(y_n) - f(c)}{y_n - c}, 
+    \end{align*}
+    but each difference quotient is nonpositive since $f(c)$ is a maximum!  Similarly, 
+    \begin{align*}
+        f'(c) = \lim\limits_{n\to \infty} \frac{f(x_n) - f(c)}{x_n - c}, 
+    \end{align*}
+    but each difference quotient is nonnegative since $f(c)$ is a maximum!  Thus, by the Order Limit Theorem, $0 \leq f'(c) \leq 0$, or $f'(c)=0$.
 \end{proof}
 
+\begin{exercise}
+    Prove Darboux's Theorem:
+    \begin{theorem}
+        If $f$ is differentiable on an interval $[a,b]$, and if $\alpha$ satisfies $f'(a) < \alpha < f'(b)$ (or $f'(a) > \alpha >f'(b)$), then there exists a point $c \in (a,b)$ where $f'(c)= \alpha$.
+    \end{theorem}
+    \textit{Hint:} Define a new function $g(x) = f(x) -\alpha x$, so that $g'(x) = f'(x) - \alpha$.  Then, $g'(a) < 0$ and $g'(b) > 0$.  Show that there exists a point $x \in (a,b)$ such that $g(a) > g(x)$, and a point $y \in (a,b)$ where $g(y) < g(b)$.
+\end{exercise}
+\vspace{-0.3in}
+\textcolor{red}{
+\begin{proof}
+    Define a new function $g(x) = f(x) -\alpha x$, so that $g'(x) = f'(x) - \alpha$.  Specifically, since $g'(a)< 0$, then there exists a $\delta > 0$ such that the difference quotient
+\begin{align*}
+    \frac{g(x) -g(a)}{x-a} < 0 
+\end{align*}
+for some $0 < x-a < \delta$.  Consequently, since $x-a$ is positive, $g(x) - g(a) < 0$, or $g(x) < g(a)$.  An analogous proof holds to show that there exists $g(y) < g(b)$.  This implies that there is a point where the function has to ``turn around", meaning a minimum must exist.  Then, we can apply the Interior Extremum Theorem and state that there exists a point $c\in (a,b)$ where $g'(c) = 0,$ which implies $f'(c) = \alpha$.
+\end{proof}
+}
+
+Note that this is kind of like the Intermediate Value Theorem.  However, it is not an immediate application of this, as there exist functions which are differentiable, but their derivative is not continuous.  Our example $f(x) = x^2\sin(1/x)$ has derivative $f'(x) = 2x\sin(1/x) - \cos(1/x)$, and $\cos(1/x)$ is not continuous at $x=0$.
+
+\begin{theorem}{(Rolle's Theorem)}
+    Let $f:[a,b] \to \mathbb{R}$ be continuous on $[a,b]$ and differentiable on $(a,b)$.  If $f(a) = f(b)$, then there exists a point $c \in (a,b)$ where $f'(c) = 0$.
+\end{theorem}
+\begin{proof}
+    Since $f$ is continuous on a compact set, it attains a max and a min.  If they both occur at the endpoints, then $f$ is a constant function and consequently $f'(x) = 0$ for all $x \in [a,b]$.  Else, if the max or min occurs on the interior, then it follow from the Interior Extremum Theorem that there exists a $c \in (a,b)$ where $f'(c) = 0.$
+\end{proof}
+
+\begin{theorem}{(Mean Value Theorem}
+    If $f:[a,b]\to \mathbb{R}$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then there exists a point
+\end{theorem}
 
 \end{document}
