@@ -1,0 +1,61 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Homework 8}
+    \begin{abstract} Solve the following problems.  Due \textbf{May 29th} in class. \end{abstract}
+    \maketitle
+
+\begin{exercise}
+\begin{enumerate}
+    \item Prove that $\frac{d}{dx}x^n = nx^{n-1}$.
+    \item Prove that $\frac{d}{dx} \sin(x) = \cos(x)$.  \textit{Hint:} Use a trigonometric identity.
+\end{enumerate}
+\end{exercise}
+
+% \begin{exercise}
+%     Let $f(x) = x^2$ for $x \in \mathbb{Q}$ and $f(x) = 0$ for $x \in \mathbb{R}\setminus \mathbb{Q}$.
+%     \begin{enumerate}
+%         \item Sketch the graph of $f$.
+%         \item Show $f$ is differentiable at $x = 0$. \textit{Hint:} You will have to use the definition of derivative.
+%         \item Calculate $f'$ on $\mathbb{R}$ and sketch its graph.
+%         \item Is $f'$ continuous on $\mathbb{R}$?  differentiable on $\mathbb{R}$?
+%     \end{enumerate}
+% \end{exercise}
+
+\begin{exercise}
+    Suppose that $f$ is differentiable at $a$.  Prove
+    \begin{align*}
+        \lim\limits_{h\to 0} \frac{f(a+h) - f(a-h)}{2h} = f'(a).
+    \end{align*}
+\end{exercise}
+
+\begin{exercise}
+    Let $f$ be a function defined on an open interval $I$ containing $a$.  Show $f'(a)$ exists if and only if there is a function $\epsilon(x)$ defined on $I$ such that
+    \begin{align*}
+        f(x)- f(a) = (x-a)[f'(a)-\epsilon(x)] \text{ and } \lim\limits_{x\to a} \epsilon(x) = 0.
+    \end{align*}
+\end{exercise}
+
+\begin{exercise}
+    Suppose $f$ is differentiable on $\mathbb{R}$ and $f(0) = 0$, $f(1) = 1$, and $f(2) = 1$.  
+    \begin{enumerate}
+        \item Show $f'(x) = \frac12$ for some $x \in (0,2)$.
+        \item Show $f'(x) = \frac17$ for some $x \in (0,2)$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Let $f$ be defined on $\mathbb{R}$, and suppose $|f(x) - f(y)| \leq (x-y)^2$ for all $x,y \in \mathbb{R}$.  Prove that $f$ is a constant function.
+\end{exercise}
+
+\begin{exercise}
+    \begin{enumerate}
+        \item Suppose $f$ is twice differentiable on an open interval $I$ and $f''(x) = 0$ for all $x \in I$.  Show $f$ has the form $f(x) = ax+b$ for suitable constants $a$ and $b$.
+        \item Suppose $f$ is three times differentiable on an open interval $I$ and $f''' =0$ on $I$.  What form does $f$ have?  Prove your claim.
+     \end{enumerate}
+    
+    
+\end{exercise}
+
+\end{document}

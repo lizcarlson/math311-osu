@@ -1,0 +1,114 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 20}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Properties of derivatives \\
+    - Chain rule
+\end{abstract}
+
+\maketitle
+
+\begin{definition}
+    Let $g:A \to \mathbb{R}$ be a function defined on an interval $A$.  Given $c \in A$, the derivative of $g$ at $c$ is defined as
+    \begin{align*}
+        g'(c) := \lim\limits_{x\to c} \frac{g(x) - g(c)}{x-c},
+    \end{align*}
+    provided the limit exists.  If $g'$ exists for all points $c \in A$, we say that $g$ is differentiable on $A$.
+\end{definition}
+
+\begin{exercise}
+    Let $f,g$ be functions defined on an interval $A$, and assume both are differentiable at some point $c \in A$.  Prove the following:
+    \begin{enumerate}
+        \item $(f+g)'(c) = f'(c) + g'(c)$
+        \item $(fg)'(c) = f'(c)g(c) + f(c) g'(c).$
+    \end{enumerate}
+\end{exercise}
+
+Now, we want to look at derivatives of quotients.  The natural way to prove this is, formally,
+\begin{align*}
+    &\lim\limits_{x\to c} \frac{f(x)/g(x) - f(c)/g(c)}{x-c}
+    \\
+    &\quad =
+    \lim\limits_{x\to c} \frac{(f(x)g(c) - f(c)g(x))/(g(x)g(c))}{x-c}
+    \\
+    &\quad = 
+    \lim\limits_{x\to c} \frac{(f(x)g(c) - f(c)g(x))}{x-c} \cdot \lim\limits_{x\to c} \frac{1}{(g(x)g(c))}
+    \\
+    &\quad =
+    \lim\limits_{x\to c} \frac{(f(x)-f(c)g(c) - f(c)(g(x)-g(c))}{x-c} \cdot \lim\limits_{x\to c} \frac{1}{(g(x)g(c))}
+    \\
+    &\quad =
+    \lim\limits_{x\to c} \frac{(f(x)-f(c)g(c)}{x-c} - \lim\limits_{x\to c} \frac{f(c)(g(x)-g(c))}{x-c} \cdot \lim\limits_{x\to c} \frac{1}{(g(x)g(c))}
+\end{align*}
+
+Of course, this is not correct.  Why?
+
+\begin{example}
+    Consider the function 
+    \begin{align*}
+        f(x) = \begin{cases}
+            x^2 \sin\left(\frac1x\right) & x\neq 0 \\
+            0 & x=0.
+        \end{cases}       
+    \end{align*}
+    In this case, no matter what neighborhood I take of $x = 0$, this function evaluates to $0$ on at least one element (in fact countably many elements) in that neighborhood.  However,
+    \begin{align*}
+        &\lim\limits_{x\to 0} \frac{f(x) - 0}{x-0}
+        \\
+        &\qquad = x \sin\left(\frac1x\right) = 0,
+    \end{align*}
+    i.e. the derivative exists!
+\end{example}
+The derivative of this function is $0$ in this case and therefore the quotient rule doesn't apply, but this example is illustrative for difficulties that arise in proving chain rule, which recall from Calculus I reads as $(g\circ f)'(c) = g'(f(c))\cdot f'(c)$ (you can find similar counterexamples for the quotient rule). 
+As we have now provided the formal proof for the derivative of the quotient, we will prove the chain rule (in which a similar issue arises) but now rigorously avoiding any division by $0$.
+
+Let $g$ be an arbitrary differentiable function on $\mathbb{R}$; then we can prove chain rule in this specific case using the following naive approach (Kenton, 1999):
+\begin{proof}
+    Let's write out what the derivative of $g\circ f$ looks like by definition:
+    \begin{align*}
+        (g\circ f)'(c) &= \lim\limits_{x\to c} \frac{g(f(x)) - g(f(c))}{x-c}
+        \\
+        &= \lim\limits_{x\to c} \frac{g(f(x)) - g(f(c))}{f(x)-f(c)}\cdot \frac{f(x) - f(c)}{x-c}.
+    \end{align*}
+    Note that $f$ is continuous at $c$, so this, formally, should conclude the proof.  However, this does not hold if I have $f(x) = f(c)$ at any point in a neighborhood near $(c,f(c))$.  To overcome this problem and show the proof still holds, we instead consider the following:
+    \begin{align*}
+        &\sup \left( \frac{g(f(x)) - g(f(c))}{x-c} :0 < |x-c| < \delta  \right)
+        \\
+        &\qquad = \sup \left( \frac{g(f(x)) - g(f(c))}{x-c} :0 < |x-c| < \delta, f(x) \neq f(c) \right)
+        \\
+        &\qquad  = \sup \left( \frac{g(f(x)) - g(f(c))}{f(x)-f(c)}\cdot \frac{f(x) - f(c)}{x-c} :0 < |x-c| < \delta, f(x) \neq f(c) \right).
+    \end{align*}
+    This ensures that we are \textit{not} dividing  by $0$.  The first fraction is bounded in some neighborhood of $c$ since $g$ is assumed differentiable at $f(c)$.  The second fraction can be made arbitrarily small since $f'(c) = 0$.
+\end{proof}
+
+Now, let's prove this in generality, using a similar (but slightly more involved) trick to avoid dividing by $0$.
+
+\begin{theorem}
+    Let $f :A \to \mathbb{R}$ and $g:B\to \mathbb{R}$ satisfy $f(A) \subseteq B$ so that the composition $g\circ f$ is well-defined.  If $f$ is differentiable at $c \in A$ and if $g$ is differentiable at $f(c) \in B$, then $g \circ f$ is differentiable at $c$ with $(g\circ f)'(c) = g'(f(c))\cdot f'(c)$.
+\end{theorem}
+\begin{proof}
+    Since $g$ is differentiable at $f(c)$, we can say
+    \begin{align}
+        \lim\limits_{y\to f(c)} \frac{g(y) - g(f(c))}{y-f(c)}.
+    \end{align}
+    This can be rewritten in the following manner: let $\tilde{d}(y)$ be the difference
+    \begin{align}
+        \tilde{d}(y) &= \frac{g(y) - g(f(c))}{y-f(c)} - g'(f(c)).
+    \end{align}
+    Clearly, $\lim\limits_{y\to f(c)} \tilde{d}(y) = 0$; consequently, define the function $d(f(c)) = 0$ and $d(y) = \tilde{d}(y)$ whenever $y \neq f(c)$.  Rearranging $d(y)$, 
+    \begin{align}
+        g(y) - g(f(c)) = (g'(f(c)) + d(y)) (y-f(c)).
+    \end{align}
+    Note this equation holds for all $y \in B$, including $y = f(c)$ (because $0=0$ is a true statement).  Thus, we are now free to substitute $y = f(t)$ for any $t \in A$.  If $t \neq c$, we can divide equation (16) by $t-c$ without penalty:
+    \begin{align}
+        \frac{g(f(t)) - g(f(c))}{t-c} = (g'(f(c)) + d(f(t)))\cdot \frac{f(t) - f(c)}{t-c}.
+    \end{align}
+    The limit can be taken now without concern of dividing by $0$.
+\end{proof}
+
+
+\end{document}
