@@ -7,8 +7,7 @@
     \begin{abstract}  
     Outline: \\
     - Interior Extremum Theorem \\
-    - Darboux's Theorem \\
-    - Rolle's Theorem
+    - Darboux's Theorem 
 \end{abstract}
 
 \maketitle
@@ -43,21 +42,11 @@
 \begin{align*}
     \frac{g(x) -g(a)}{x-a} < 0 
 \end{align*}
-for some $0 < x-a < \delta$.  Consequently, since $x-a$ is positive, $g(x) - g(a) < 0$, or $g(x) < g(a)$.  An analogous proof holds to show that there exists $g(y) < g(b)$.  This implies that there is a point where the function has to ``turn around", meaning a minimum must exist.  Then, we can apply the Interior Extremum Theorem and state that there exists a point $c\in (a,b)$ where $g'(c) = 0,$ which implies $f'(c) = \alpha$.
+for some $0 < x-a < \delta$.  Consequently, since $x-a$ is positive, $g(x) - g(a) < 0$, or $g(x) < g(a)$.  An analogous proof holds to show that there exists $g(y) < g(b)$.  Moreover, since $g$ is continuous, $g([a,b])$ is a compact set, and consequently contains its maximum and minimum.  The minimum cannot be at the endpoints based on our argument that $g(y) < g(b)$ and $g(x) < g(a)$, and therefore it must be in the interior at some point $c \in (a,b)$.  Then, we can apply the Interior Extremum Theorem and state that there exists a point $c\in (a,b)$ where $g'(c) = 0,$ which implies $f'(c) = \alpha$.
 \end{proof}
 }
 
 Note that this is kind of like the Intermediate Value Theorem.  However, it is not an immediate application of this, as there exist functions which are differentiable, but their derivative is not continuous.  Our example $f(x) = x^2\sin(1/x)$ has derivative $f'(x) = 2x\sin(1/x) - \cos(1/x)$, and $\cos(1/x)$ is not continuous at $x=0$.
 
-\begin{theorem}{(Rolle's Theorem)}
-    Let $f:[a,b] \to \mathbb{R}$ be continuous on $[a,b]$ and differentiable on $(a,b)$.  If $f(a) = f(b)$, then there exists a point $c \in (a,b)$ where $f'(c) = 0$.
-\end{theorem}
-\begin{proof}
-    Since $f$ is continuous on a compact set, it attains a max and a min.  If they both occur at the endpoints, then $f$ is a constant function and consequently $f'(x) = 0$ for all $x \in [a,b]$.  Else, if the max or min occurs on the interior, then it follow from the Interior Extremum Theorem that there exists a $c \in (a,b)$ where $f'(c) = 0.$
-\end{proof}
-
-\begin{theorem}{(Mean Value Theorem}
-    If $f:[a,b]\to \mathbb{R}$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then there exists a point
-\end{theorem}
 
 \end{document}

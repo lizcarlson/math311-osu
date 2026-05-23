@@ -1,0 +1,45 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 21}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Rolle's Theorem \\
+    - Mean Value Theorem
+\end{abstract}
+
+\maketitle
+
+\begin{theorem}{(Rolle's Theorem)}
+    Let $f:[a,b] \to \mathbb{R}$ be continuous on $[a,b]$ and differentiable on $(a,b)$.  If $f(a) = f(b)$, then there exists a point $c \in (a,b)$ where $f'(c) = 0$.
+\end{theorem}
+\begin{proof}
+    Since $f$ is continuous on a compact set, it attains a max and a min due to EVT.  If they both occur at the endpoints, then $f$ is a constant function and consequently $f'(x) = 0$ for all $x \in [a,b]$.  Else, if the max or min occurs on the interior, then it follow from the Interior Extremum Theorem that there exists a $c \in (a,b)$ where $f'(c) = 0.$
+\end{proof}
+
+\begin{theorem}{(Mean Value Theorem}
+    If $f:[a,b]\to \mathbb{R}$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then there exists a point $c \in (a,b)$ where 
+    \begin{align*}
+        f'(c) = \frac{f(b) - f(a)}{b-a}.
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    Notice this is a more general version of Rolle's Theorem when $f(b) = f(a)$.  To use Rolle's Theorem, we consider the line
+    \begin{align*}
+        f(a) + \left(\frac{f(b) - f(a)}{b-a} \right)(x-a).
+    \end{align*}
+    Now consider
+    \begin{align*}
+        d(x) = f(x) - \left(f(a) + \left(\frac{f(b) - f(a)}{b-a} \right)(x-a)\right).
+    \end{align*}
+    Then, $d(a) = f(a) - f(a) = 0$, and $d(b) = f(b) -\left(f(a) + \left(\frac{f(b) - f(a)}{b-a} \right)(b-a)\right) = 0$.
+    Consequently, we can apply Rolle's Theorem to the function $d(x)$:
+    there exists a $c \in (a,b)$ such that $d'(c) = 0$, or 
+    \begin{align*}
+        f'(c)  - \frac{f(b) - f(a)}{b-a} = 0.
+    \end{align*}
+\end{proof}
+
+\end{document}
