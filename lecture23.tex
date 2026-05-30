@@ -1,0 +1,113 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 23}
+    
+    \begin{abstract}  
+    Outline: \\
+    - L'Hospital's $\infty/\infty$ Rule \\
+    - examples of continuous, nowhere differentiable functions
+\end{abstract}
+
+\maketitle
+
+Last time, we proved L'Hospital's Theorem in the 0/0 case, but the claim was slightly false.
+    \begin{theorem}
+        Assume $f, g$ are continuous functions defined on an interval containing $a$ and assume $f$ and $g$ are differentiable on this interval, with the possible exception of the point $a$. \textcolor{red}{Assume that $g'(x) \neq 0$ for $x$ in some neighborhood of $a$.}  If $f(a) = 0$ and $g(a) = 0$, then
+        \begin{align*}
+            \lim\limits_{x\to a} \frac{f'(x)}{g'(x)} = L \text{ implies } \lim\limits_{x\to a} \frac{f(x)}{g(x)} = L.
+         \end{align*}
+    \end{theorem}
+
+If you don't make this assumption, you can't guarantee you don't have some strange ratio such that $g'(x) = 0$ on a dense collection of isolated points.  Check last class' lecture notes for the correct proof.
+
+\textcolor{red}{In the cases where $g'(x) = 0$ in any $\delta$-neighborhood of $a$ \textit{but} the limit still exists, we can still apply L'Hospital's rule to a newly defined version of $f'/g'$.  Specifically, if $g'(y)= 0$ for some $y>a$ but $\lim\limits_{x\to y} f'(x)/g'(x) = L_y$, but  near $y$ we assume $g' \neq 0$ (which is entirely doable if $g'$ is continuous), then you can redefine the function $f'/g'$ by ``filling in" the hole with the well-defined limit at $y$.  If $g'$ is not continuous, then we will have some difficulties that are nontrivial to get around.}
+
+The proof of the following theorem in Abbott is wrong for similar reasons, and so we prove the correct version in class (can you find the error?).
+\begin{theorem}
+    Assume $f$ and $g$ are differentiable on $(a,b)$, and that $\lim\limits_{x\to a} g(x) = \infty$ (or $-\infty$).  \textcolor{red}{Assume that $g'(x) \neq 0$ for $x$ near $a$.}  Then, if
+    \begin{align*}
+        \lim\limits_{x\to a} \frac{f'(x)}{g'(x)} = L,
+    \end{align*}
+    then 
+    \begin{align*}
+        \lim\limits_{x\to a} \frac{f(x)}{g(x)} = L.
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    By the definition of limit, and the assumption that $g'(x) \neq 0$ for $x$ near $a$, then for all $\epsilon > 0$ there exists $\delta > 0$ such that
+    \begin{align*}
+        \left| \frac{f'(x)}{g'(x)} - 
+        L\right| < \frac{\epsilon}2
+    \end{align*}
+    for all $a < x< a+\delta$.  Let $t := a+\delta $.   We can apply GMVT to the $f$ and $g$ on the interval $(x,t)$, \textcolor{red}{why can we not apply it to the interval $(a,t)$ like before?} then
+    \begin{align*} 
+        \frac{f(t) - f(x)}{g(t) - g(x)} = \frac{f'(c)}{g'(c)}
+    \end{align*}
+    for some $c \in (x,t)$.  Consequently, since 
+    \begin{align*}
+    L- \frac{\epsilon}2 < \frac{f'(c)}{g'(c)} < L + \frac{\epsilon}2,
+    \end{align*}
+    then 
+    \begin{align} \label{eq1}
+    L- \frac{\epsilon}2 < \frac{f(t) - f(x)}{g(t) - g(x)} < L + \frac{\epsilon}2.
+    \end{align}
+    Since $t = a+\delta$, and $x < t$, we know $\lim\limits_{x\to a} g(x) = \infty$ that $g(x) \geq g(t)$.  Multiply \eqref{eq1} by $\frac{g(x) - g(t)}{g(x)}$ to obtain
+    \begin{align*}
+        \left(L - \frac{\epsilon}2 \right)\left(1 - \frac{g(t)}{g(x)}\right) < \frac{f(x) - f(t)}{g(x)} < \left(L + \frac{\epsilon}2 \right)\left(1 - \frac{g(t)}{g(x)}\right),
+    \end{align*}
+    where the order of the inequalities is preserved since $g(x) > g(t)$, or $1 > g(t)/g(x)$. Expanding,
+    \begin{align*}
+       L - \frac{\epsilon}2 - \frac{\left(L - \frac{\epsilon}2\right)g(t) - f(t)}{g(x)} &< \frac{f(x)}{g(x)} < L+ \frac{\epsilon}2 - \frac{\left(L + \frac{\epsilon}2 \right)g(t) - f(t)}{g(x)}
+       \\
+        - \frac{\epsilon}2 - \frac{\left(L - \frac{\epsilon}2\right)g(t) - f(t)}{g(x)} &< \frac{f(x)}{g(x)} -L < \frac{\epsilon}2 - \frac{\left(L + \frac{\epsilon}2 \right)g(t) - f(t)}{g(x)}
+    \end{align*}
+    Since $t$ is fixed, and by the fact that $\lim\limits_{x\to a}g(x) = \infty$, we can choose a $0< \delta' < \delta$ such that, for all $a< x< a + \delta',$
+    \begin{align*}
+        \min\left\{\left|\frac{\left(L - \frac{\epsilon}2\right)g(t) - f(t)}{g(x)}\right|, \left|\frac{\left(L + \frac{\epsilon}2 \right)g(t) - f(t)}{g(x)}\right|\right\} < \epsilon/2.
+    \end{align*}
+    Thus, 
+    \begin{align*}
+        -\frac{\epsilon}2 - \frac{\epsilon}2 < - \frac{\epsilon}2 - \frac{\left(L - \frac{\epsilon}2\right)g(t) - f(t)}{g(x)} 
+    \end{align*}
+     and 
+     \begin{align*}
+         \frac{\epsilon}2 - \frac{\left(L + \frac{\epsilon}2 \right)g(t) - f(t)}{g(x)}
+         < \frac{\epsilon}2 + \frac{\epsilon}2.
+     \end{align*}
+     This yields the conclusion that 
+     \begin{align*}
+         -\epsilon < \frac{f(x)}{g(x)} - L < \epsilon
+     \end{align*}
+     for all $a < x< a+ \delta'$.
+\end{proof}
+
+If you would like to read a much cleaner, less involved proof, refer to the proof in Kenneth Ross' book \textit{Elementary Analysis: The Theory of Calculus}.
+
+\textcolor{red}{Do you think there exists a continuous, nowhere differentiable function?}
+
+An excellent example of such a function is the function
+\begin{align*}
+    g(x) = \sum\limits_{n=0}^\infty \frac{1}{2^n} h(x),
+\end{align*}
+where
+\begin{align*}
+    h(x) = \begin{cases}
+        |x| & x \in [-1,1]\\
+        h(x-2) & x >1 \\
+        h(x+2) & x < -1
+    \end{cases} 
+\end{align*}
+
+\begin{exercise}
+    Draw a picture of the first, second, third, and fourth partial sums of $g(x)$.  Why do you think it fails to be differentiable?
+\end{exercise}
+
+Another archetypal example of a nowhere differentiable function is the Weierstrass function (for clever choices of $a,b$)
+\begin{align*}
+    f(x) = \sum\limits_{n=0}^\infty a^n\cos(b^nx).
+\end{align*}
+This seems odd, as if I consider any partial sum, not only is it differentiable, it is INFINITELY differentiable!  Indeed, for a domain with periodic boundaries, sines and cosines can be used to approximate all functions $u(x)$ with the property $\int_\Omega |u(x)|^2 dx < \infty$.  This turns out to be extremely important in practice, as this implies for many different important PDEs, we can approximate super rough solutions with a finite sum of really nice, smooth functions.
+
+\end{document}

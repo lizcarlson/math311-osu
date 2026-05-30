@@ -2,24 +2,35 @@
 
 \begin{document}
 
-    \title{Lecture 21}
+    \title{Lecture 22}
     
     \begin{abstract}  
     Outline: \\
     - Rolle's Theorem \\
-    - Mean Value Theorem
+    - Mean Value Theorem \\
+    - L'Hospital's 0/0 Rule
 \end{abstract}
 
 \maketitle
+
+Recall:
+
+\begin{theorem}{(Interior Extremum Theorem)}
+    Let $f$ be differentiable on $(a,b)$.  If $f$ attains a max/min at some point $c \in (a,b)$, then $f'(c) = 0$.
+\end{theorem}
+
+\begin{theorem}{(Darboux's Theorem)}
+        If $f$ is differentiable on an interval $[a,b]$, and if $\alpha$ satisfies $f'(a) < \alpha < f'(b)$ (or $f'(a) > \alpha >f'(b)$), then there exists a point $c \in (a,b)$ where $f'(c)= \alpha$.
+\end{theorem}
 
 \begin{theorem}{(Rolle's Theorem)}
     Let $f:[a,b] \to \mathbb{R}$ be continuous on $[a,b]$ and differentiable on $(a,b)$.  If $f(a) = f(b)$, then there exists a point $c \in (a,b)$ where $f'(c) = 0$.
 \end{theorem}
 \begin{proof}
-    Since $f$ is continuous on a compact set, it attains a max and a min due to EVT.  If they both occur at the endpoints, then $f$ is a constant function and consequently $f'(x) = 0$ for all $x \in [a,b]$.  Else, if the max or min occurs on the interior, then it follow from the Interior Extremum Theorem that there exists a $c \in (a,b)$ where $f'(c) = 0.$
+    Since $f$ is continuous on a compact set, it attains a max and a min due to EVT.  If they both occur at the endpoints, then $f$ is a constant function and consequently $f'(x) = 0$ for all $x \in [a,b]$.  Else, if the max or min occurs on the interior, then it follows from the Interior Extremum Theorem that there exists a $c \in (a,b)$ where $f'(c) = 0.$
 \end{proof}
 
-\begin{theorem}{(Mean Value Theorem}
+\begin{theorem}{(Mean Value Theorem)}
     If $f:[a,b]\to \mathbb{R}$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then there exists a point $c \in (a,b)$ where 
     \begin{align*}
         f'(c) = \frac{f(b) - f(a)}{b-a}.
@@ -41,5 +52,84 @@
         f'(c)  - \frac{f(b) - f(a)}{b-a} = 0.
     \end{align*}
 \end{proof}
+
+\textcolor{red}{\textit{Fun fact:} It took about 400 years between the first time an observation of MVT was made in a specific case by a Indian mathematician, Rolle's theorem was proven in the late 1600s, and then the modern version of MVT using this method was proven by Cauchy in 1823.  To also be fair, at the time, the number of mathematicians studying was not as numerous or as industrious as the field is today.  It has now become a common mathematical tool to try to use existing, more simple theorems and generalize them using clever tricks like defining new functions to which you can apply the simpler theorems.  We stand on the shoulders of giants.}
+
+From here, in math, we tend to see these big theorems, and then generalize even further!  This leads to great new insights, new formulas, and deeper understanding.  Let's now prove what is called the Generalized Mean Value Theorem.
+
+\begin{theorem}{(Generalized MVT)}
+    If $f$ and $g$ are continuous on the closed interval $[a,b]$ and differentiable on the open interval $(a,b)$, then there exists a point $c \in (a,b)$ where
+    \begin{align*}
+        (f(b) -f(a))g'(c) = (g(b) - g(a))f'(c).
+    \end{align*}
+    If $g'$ is never $0$ on $(a,b)$, then the conclusion can be stated
+    \begin{align*}
+        \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b)-g(a)}.
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    Now, this type of problem, by the setup, seems like Rolle's or MVT would be useful.  Normally, MVT says, for any differentiable function $f$, then there exists $c \in (a,b)$ s.t.
+    \begin{align*}
+        \frac{f(b) - f(a)}{b-a} = f'(c).
+    \end{align*}
+    Since the derivative is on one side only, you can think about rewriting the equality such that 
+      \begin{align*}
+        (f(b) -f(a))g'(c) - (g(b) - g(a))f'(c) = 0.
+    \end{align*}
+    So, we have a derivative that at some point equals $0$.
+    Let's define $h(x) =(f(b) -f(a))g(x) - (g(b) - g(a))f(x)$.  Notice that 
+    \begin{align*}
+        h(a) &= (f(b) - f(a))g(a) - (g(b) - g(a))f(a) 
+        \\
+        &= f(b)g(a) - g(b)f(a),
+    \end{align*}
+    and 
+    \begin{align*}
+        h(b) &= (f(b) - f(a))g(b) - (g(b) - g(a))f(b)\\
+        &= -f(a) g(b) +g(a)f(b).
+    \end{align*}
+    Therefore, $h(a) = h(b)$.  Consequently, we can apply Rolle's Theorem to claim the conclusion.
+\end{proof}
+
+This is called generalized MVT because MVT follows by choosing $g(x) = x.$  Note that this, intuitively, is saying there is some point where the relative average speed of object $f$ to object $g$ was exactly attained by object $f$. Specifically,
+\begin{align*}
+\frac{f'(c)}{g'(c)} = \frac{\frac{f(b) - f(a)}{b-a}}{\frac{g(b) - g(a)}{b-a}}
+\end{align*}
+In other words, if my $x$-axis is moving, and I am moving relative to that axis, MVT still applies.  Consequently, you can start to see how math applies to understanding relativity.
+
+\begin{exercise}
+    Prove L'Hospital's Rule, the 0/0 case:
+    \begin{theorem}
+        Assume $f, g$ are continuous functions defined on an interval containing $a$ and assume $f$ and $g$ are differentiable on this interval, with the possible exception of the point $a$. Assume that $g'(x) \neq 0$ for $x$ in some neighborhood of $a$.  If $f(a) = 0$ and $g(a) = 0$, then
+        \begin{align*}
+            \lim\limits_{x\to a} \frac{f'(x)}{g'(x)} = L \text{ implies } \lim\limits_{x\to a} \frac{f(x)}{g(x)} = L.
+         \end{align*}
+    \end{theorem}
+\end{exercise}
+\textcolor{red}{
+\begin{proof}
+% By definition,
+% \begin{align*}
+%     L= \lim\limits_{x\to a} \frac{\lim\limits_{y\to x} \frac{f(y) - f(x)}{y-x}}{\lim\limits_{z\to x} \frac{g(z) - g(x)}{z-x}}
+% \end{align*}
+% By the MVT, we know there exists $c_1(x), c_2(x)$ such that 
+% \begin{align*}
+%     \lim\limits_{x\to a} \frac{\frac{f(c_1(x)) - f(x)}{c_1(x)-x}}{\frac{g(c_2(x)) - g(x)}{c_2(x)-x}}
+% \end{align*}
+    Let's consider $x>a$ without loss of generality (because the limit is defined).  By the generalized MVT, we know that, for any $x$ near $a$ such that $g'(x) \neq 0$,
+    \begin{align*}
+        (f(x) - f(a))g'(c) = (g(x) - g(a))f'(c)
+    \end{align*}
+    for some $c(x) \in (a,x)$.  Since $f(a) = g(a) = 0,$ this reduces to
+    \begin{align*}
+        f(x)g'(c(x)) = g(x)f'(c(x)).
+    \end{align*}
+    Since $g'(c) \neq 0$, this implies that $g(x) \neq 0$.  Thus, we can rewrite this equality as
+    \begin{align*}
+        \frac{f(x)}{g(x)} = \frac{f'(c)}{g'(c)}.
+    \end{align*}
+    As we take the limit as $x \to a$, by construction, $c \to a$ as well due to the Squeeze Theorem.  The analogous argument holds for when $x< a$ (and in this case, we treat $a$ as $b$ in the GMVT).  This yields the desired conclusion.
+\end{proof}
+}
 
 \end{document}

@@ -1,0 +1,91 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Bonus Homework}
+    \begin{abstract} \textbf{Choose 5} of the following problems to solve.  Due \textbf{June 5th} in class. \end{abstract}
+    \maketitle
+
+\begin{exercise}
+    If $\sup(A) < \sup(B)$, prove that there exists $b \in B$ such that $b$ is an upper bound for $A$.
+\end{exercise}
+
+\begin{exercise}
+    \begin{enumerate}
+        \item Prove $\sum\limits_{n=1}^\infty \frac{n-1}{2^{n+1}} = \frac12$.  \textit{Hint:} Note that $\frac{k-1}{2^{k+1}} = \frac{k}{2^k} - \frac{k+1}{2^{k+1}}$.
+        \item Use the previous answer to calculate $\sum\limits_{n=1}^\infty \frac{n}{2^{n}}$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Prove whether $\sum\limits_{n=0}^\infty \frac{(-1)^n n!}{2^n}$ converges or diverges.
+\end{exercise}
+
+\begin{exercise}
+    Consider the doubly indexed array $a_{m,n} = \frac{m}{m+n}$.
+    \begin{enumerate}
+        \item Intuitively speaking, what should $\lim\limits_{m,n \to \infty} a_{m,n}$ represent?  Compute the ``iterated" limits
+        \begin{align*}
+            \lim\limits_{n\to\infty}\lim\limits_{m\to \infty}a_{m,n} \; \text{ and } \; \lim\limits_{m\to\infty}\lim\limits_{n\to \infty}a_{m,n}.
+        \end{align*}
+        \item Formulate a rigorous definition for $\lim\limits_{m,n \to \infty} a_{m,n}$ using an $\epsilon$-$N$-$M$ formulation.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Let $B = \left\{ \frac{(-1)^nn}{n+1}: n \in \mathbb{N}\right\}$.
+    \begin{enumerate}
+        \item Find the limit points of $B$.
+        \item Is $B$ a closed set?
+        \item Is $B$ an open set?
+        \item Does $B$ contain any isolated points?
+        \item Find $\overline{B}$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Does there exist a perfect set consisting only of rational numbers?  Prove or provide a counterexample.
+\end{exercise}
+
+\begin{exercise}
+    A set $E$ is totally disconnected if, given any two points $x,y \in E$, there exist separated sets $A$ and $B$ with $x \in A$, $y \in B$, and $ E = A \cup B$.
+    \begin{enumerate}
+        \item Prove that $\mathbb{Q}$ is totally disconnected.
+        \item Is the set of irrational numbers totally disconnected?
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Consider the following subset of $\mathbb{R}^2$:
+    \begin{align*}
+        E = \left\{ \left(x, \sin(1/x)) \; : \; x \in (0,1]\right)\right\}.
+    \end{align*}
+    Note that $E$ is the graph of $f(x) = \sin(1/x)$ on $(0,1]$.  Sketch $E$ and determine $\overline{E}$.  \textcolor{blue}{Note that the closure of $E$ does NOT have to be the graph of a function.}
+\end{exercise}
+
+Consider the definition of uniform convergence of sequences of functions:
+\begin{definition}
+    Let $\{f_n\}$ be a sequence of real-valued functions defined on a set $S \subseteq \mathbb{R}$.  The sequence $\{f_n\}$ converges uniformly on $S$ to a function $f$ defined on $S$ if for all $\epsilon > 0$, there exists $N \in \mathbb{N}$ such that $|f_n(x) - f(x)| < \epsilon $ for all $x \in S$ and $n > N$.
+\end{definition}
+\begin{exercise}
+    Let $f_n(x) = \frac{nx}{1+nx}$ for $x \in [0,\infty)$.
+    \begin{enumerate}
+        \item Find $f(x) = \lim\limits_{n\to \infty} f_n(x)$.
+        \item Does $f_n \to f$ uniformly on $[0,1]$?  Justify.
+        \item Does $f_n \to f$ uniformly on $[1,\infty)$?  Justify.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Prove $\frac{d}{dx} e^x = e^x$ using the definition of derivative.
+\end{exercise}
+
+\begin{exercise}
+    Prove $ex \leq e^x$.
+\end{exercise}
+
+\begin{exercise}
+    Compute $\lim\limits_{x\to 3} \frac{1/x-1/3}{x^2-9}$.  Carefully justify your use of any relevant theorems.
+\end{exercise}
+
+\end{document}
