@@ -1,0 +1,106 @@
+\documentclass{ximera}
+
+\begin{document}
+
+    \title{Lecture 24}
+    
+    \begin{abstract}  
+    Outline: \\
+    - Stone-Weierstrass Theorem
+\end{abstract}
+
+\maketitle
+
+
+Approximating functions with series is a very old idea, but not an obvious one.  A lot of incredible discoveries have been made using this tool.
+
+Taylor or power series
+\begin{align*}
+    f(x) = \sum\limits_{n=0}^\infty a_nx^n
+\end{align*}
+
+Trigonometric or Fourier series
+\begin{align*}
+    f(x) = a_0 + \sum\limits_{n=1}^\infty a_n \cos(nx) + b_n \sin(nx) = \sum\limits_{k=-\infty}^\infty c_k e^{ikx}
+\end{align*}
+
+The trigonometric series is special
+
+\begin{exercise}
+    \begin{enumerate}
+        \item Show that $\int\limits_{-\pi}^\pi \sin(x)\cos(x) = 0$.
+        \item Show that $\int\limits_{-\pi}^\pi \cos(x)\cos(2x) = 0$.
+        \item What do you conjecture about $\int\limits_{-\pi}^\pi \cos(mx)\cos(nx)$ for $m \neq n$?  Similarly,  what do you conjecture about $\int\limits_{-\pi}^\pi \sin(mx)\sin(nx)$ for $m \neq n$?
+        \item Compute $\int\limits_{-\pi}^\pi \cos(x)\cos(x)$ and $\int\limits_{-\pi}^\pi \sin(x)\sin(x)$.
+    \end{enumerate}
+\end{exercise}
+
+The trigonometric series is special because the functions along which you ``expand" are orthogonal in the inner product space known as $L^2([-\pi,\pi])$.
+\begin{align*}
+    L^2([-\pi,\pi]) \; \text{ ``=" } \; \left\{f:[-\pi,\pi] \to \mathbb{R}
+: \int_{-\pi}^\pi |f|^2 dx < \infty \right\}
+\end{align*}
+The inner product on this space, like a dot product, is defined as $\langle f,g\rangle := \int_{-\pi}^\pi f(x) g(x) dx$.
+
+Consequently, finding the coefficients of a Fourier series is easy!  
+
+\begin{exercise}
+    Find the coefficients $a_0,a_n,$ and $b_n$ for the function
+    \begin{align*}
+        f(x) = \begin{cases}
+        1 & \text{ if } 0 < x< \pi \\
+        0 & \text{ if } 0 = x \text{ or } x= \pi \\
+        -1 & \text{ if } -\pi < x< 0 .\\
+        \end{cases}
+    \end{align*}    
+\end{exercise} 
+
+\begin{theorem}{Riemann-Lebesgue Lemma}
+    Assume $h(x)$ is continuous on $(-\pi,\pi]$.  Then
+    \begin{align*}
+        \int_{-\pi}^\pi h(x) \sin (nx) dx \to 0 \text{ and }\int_{-\pi}^\pi h(x) \cos (nx) dx \to 0 
+    \end{align*}
+    as $n \to \infty.$
+\end{theorem}
+
+This is actually relatively easy to prove, but we do not yet know what it means to rigorously define an integral yet (you will do this in 312).  
+
+Now, there are multiple kinds of convergence.  I could mean multiple things by saying 
+\begin{align*}
+    f(x) = a_0 + \sum\limits_{n=1}^\infty a_n \cos(nx) + b_n \sin(nx).
+\end{align*}
+Equality could hold using a pointwise convergence argument, or maybe uniform convergence (which you saw on the bonus homework), or this new notion of $L^2$ convergence (which makes sense by the way we have investigated this problem), or also by Cesaro mean convergence.  
+
+\begin{theorem}
+    Let $f(x)$ be continuous on $(-\pi,\pi]$ and let $S_N(x)$ be the $N^{\text{th}}$ partial sum of the Fourier series.  If follows that 
+    \begin{align*}
+        \lim\limits_{N\to\infty}S_N(x) =f(x)
+    \end{align*}
+    pointwise for every $x \in (-\pi,\pi]$ where $f'(x)$ exists.
+\end{theorem}
+
+This requires some intense regularity on $f$.  If you have a less regular $f$, there are other, more technical arguments that can show the Fourier series still converges in an integral sense to those functions.  Moreover, there is an incredible theorem that says if a sequence of functions converges in $L^2,$ there exists a subsequence that converges \textit{almost everywhere}. 
+
+Recall Cesaro mean convergence :
+If $x_n \to x$, then $\frac{x_1+ \cdots x_n}n \to x$.
+
+\begin{theorem}{(Fej{\'e}r's Theorem)}
+Let $S_n(x)$ be the $n^{\text{th}}$ partial sum of the Fourier series for a function $f$ on $(-\pi,\pi]$.  Define
+\begin{align*}
+    \sigma_N = \frac{1}{N+1} \sum\limits_{n=0}^N S_n(x).
+\end{align*}
+If $f$ is continuous on $(-\pi,\pi]$, then $\sigma_N(x) \to f(x)$ uniformly.
+\end{theorem}
+
+Fej{\'e}r's Theorem turns out to be useful to prove the incredibly powerful Weierstrass Approximation Theorem.
+
+\begin{theorem}{(Weierstrass Approximation Theorem)}
+    If $f$ is a continuous function on a closed interval $[a,b]$, then there exists a sequence of polynomials that converges uniformly to $f(x)$ on $[a,b]$.
+\end{theorem}
+The proof uses the fact that $\sin(x)$ and $\cos(x)$ have a Taylor series which converges uniformly to each of them (which you will probably prove in 312).  The Taylor series itself requires us to presume infinite differentiability of the function, notice here we are assuming that $f$ is only continuous.  By instead using the fact that $\sin$ and $\cos$ are both infinitely differentiable, you can combine this with the usual convergence of partial sums argument with F{\'e}jer's theorem to reach the conclusion.
+
+Consequently, we can say that we can approximate rougher things in the usual way. 
+
+This is an extremely rough overview of approximating functions.  Main takeaway: approximation of rough functions by nice functions is entirely possible!  On such an idea, rests the entirety of applied mathematics and modeling.
+
+\end{document}
