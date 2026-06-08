@@ -42,18 +42,7 @@ The trigonometric series is special because the functions along which you ``expa
 \end{align*}
 The inner product on this space, like a dot product, is defined as $\langle f,g\rangle := \int_{-\pi}^\pi f(x) g(x) dx$.
 
-Consequently, finding the coefficients of a Fourier series is easy!  
-
-\begin{exercise}
-    Find the coefficients $a_0,a_n,$ and $b_n$ for the function
-    \begin{align*}
-        f(x) = \begin{cases}
-        1 & \text{ if } 0 < x< \pi \\
-        0 & \text{ if } 0 = x \text{ or } x= \pi \\
-        -1 & \text{ if } -\pi < x< 0 .\\
-        \end{cases}
-    \end{align*}    
-\end{exercise} 
+Consequently, finding the coefficients of a Fourier series is easy!
 
 \begin{theorem}{Riemann-Lebesgue Lemma}
     Assume $h(x)$ is continuous on $(-\pi,\pi]$.  Then
@@ -62,8 +51,6 @@ Consequently, finding the coefficients of a Fourier series is easy!
     \end{align*}
     as $n \to \infty.$
 \end{theorem}
-
-This is actually relatively easy to prove, but we do not yet know what it means to rigorously define an integral yet (you will do this in 312).  
 
 Now, there are multiple kinds of convergence.  I could mean multiple things by saying 
 \begin{align*}
