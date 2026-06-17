@@ -5,15 +5,54 @@
     \title{Final Exam}
     \begin{abstract} Solve the following problems. \end{abstract}
     \maketitle
+    
 \begin{exercise}
-    Let $A$ be bounded below, and define $B:= \{b \in \mathbb{R} : b \text{ is a lower bound for } A\}$.  Show that $\inf(B) = \sup(A)$.
-\end{exercise} 
+  Given sets $A$ and $B$ in $\mathbb{R}$, define $A+B = \{a+b : a \in A \text{ and }  b \in B\}$.
+Follow these steps to prove that if A and B are nonempty and bounded above
+then $\sup(A + B) = \sup A + \sup B.$
+\begin{enumerate}
+    \item Let $s = \sup A$ and $t = \sup B$. Show $s + t$ is an upper bound for A + B.
+    \vfill
+    \item Now let $u$ be an arbitrary upper bound for $A + B$, and temporarily fix $a \in A$. Show $t \leq u - a$.
+    \vfill
+\item Finally, show $\sup(A + B) = s + t$.
+\vfill
+\end{enumerate}
+\end{exercise}
+ \newpage
+
+\begin{exercise}
+    The interior of $E$ is denoted $E^\circ$ and is defined as
+\begin{align*}
+    E^\circ = \{x \in E : \exists \; \epsilon > 0  \text{ s.t. } V_\epsilon(x) \subseteq E\}.
+\end{align*}
+\begin{enumerate}
+    \item Show that E is open if and only if $E^\circ = E$.
+    \vfill
+    \item Recall that $\overline{E}$ is defined as the smallest closed set containing $E$.  Show that E is closed if and only if $\overline{E}  = E$.
+    \vfill
+\end{enumerate}
+\end{exercise}
 \newpage
 
 \begin{exercise}
-    Suppose $x_n \to x$.  Prove that $y_n \to x$ where 
+    Let $f$ be a function defined on all of $\mathbb{R}$ and assume there is a constant $c$ such that $0 < c<1$ and 
     \begin{align*}
-        y_n := \frac{x_1 + \cdots + x_n}{n}.
+        |f(x) - f(y) | \leq c |x-y|
     \end{align*}
- \end{exercise}
+    for all $x,y \in \mathbb{R}$.
+    \begin{enumerate}
+        \item Show that $f$ is continuous on $\mathbb{R}$.
+        \vfill
+        \item Pick some point $y_1 \in \mathbb{R}$ and construct the sequence 
+        \begin{align*}
+            (y_1, f(y_1), f(f(y_1)), \;\ldots).
+        \end{align*}
+        In general, if $y_{n+1}= f(y_n)$, show that the resulting sequence $\{y_n\}$ is a  Cauchy sequence.  Define the limit to be $y := \lim\limits_{n\to \infty} y_n$.
+        \vfill
+        \newpage
+        \item Prove that $y$ is a fixed point of $f$, and that it is the unique fixed point.
+    \end{enumerate}
+\end{exercise}
+ 
 \end{document}
